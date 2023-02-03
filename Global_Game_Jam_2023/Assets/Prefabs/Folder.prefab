@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4497833447533146120}
   - component: {fileID: 4497833447533146127}
-  - component: {fileID: 4497833447533146121}
+  - component: {fileID: 4274445027799889256}
   m_Layer: 3
   m_Name: Folder
   m_TagString: Untagged
@@ -60,7 +60,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4497833447533146121
+--- !u!114 &4274445027799889256
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69,9 +69,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4497833447533146126}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70950fb3755e1e4479d203ba4803af86, type: 3}
+  m_Script: {fileID: 11500000, guid: bc446917ab1588848837ceabf1b0b828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4497833447751555755
 GameObject:
   m_ObjectHideFlags: 0
