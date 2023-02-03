@@ -845,6 +845,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5f490fba14097a41926ff6a5056a249, type: 3}
+--- !u!1001 &4130317719909436978
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8419835956589299970, guid: 75c6fbb9d6608344cb20cc57a79794fb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419835956589299970, guid: 75c6fbb9d6608344cb20cc57a79794fb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419835956589299970, guid: 75c6fbb9d6608344cb20cc57a79794fb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419835956589299970, guid: 75c6fbb9d6608344cb20cc57a79794fb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419835956589299970, guid: 75c6fbb9d6608344cb20cc57a79794fb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419835956589299970, guid: 75c6fbb9d6608344cb20cc57a79794fb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419835956589299970, guid: 75c6fbb9d6608344cb20cc57a79794fb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419835956589299970, guid: 75c6fbb9d6608344cb20cc57a79794fb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419835956589299970, guid: 75c6fbb9d6608344cb20cc57a79794fb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419835956589299970, guid: 75c6fbb9d6608344cb20cc57a79794fb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419835956589299970, guid: 75c6fbb9d6608344cb20cc57a79794fb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525018257380755874, guid: 75c6fbb9d6608344cb20cc57a79794fb,
+        type: 3}
+      propertyPath: m_Name
+      value: Checkpoint
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 75c6fbb9d6608344cb20cc57a79794fb, type: 3}
 --- !u!1001 &6291500922550909640
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     [SerializeField] float maxFallingSpeed;
     [Header("Interactable Settings")]
     [SerializeField] float radius;
+    Checkpoint currentCheckpoit;
+    Animator _animator;
     Rigidbody2D _rigidbody;
     Vector2 _direction;
     Vector2 _jumpDestination;
@@ -32,9 +34,12 @@ public class Player : MonoBehaviour
     bool _isGrounded;
     float _currentVerticalSpeed;
     float _currentRunSpeed;
+    public Animator Animator => _animator;
+    public Checkpoint Checkpoint => currentCheckpoit;
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -67,6 +72,17 @@ public class Player : MonoBehaviour
     {
         RaycastHit2D[] hits = new RaycastHit2D[10];
         Physics2D.BoxCastNonAlloc(groundCheckPivot.position, new Vector2(0.5f, groundCheckDistance), 0, Vector2.down, hits, 0, groundCheckLayerMask);
+
+        foreach (var hit in hits.Where(x => x.collider != null))
+        {
+            if(hit.collider.bounds.max.y < groundCheckPivot.position.y)
+            {
+                _isGrounded = true;
+                _isFalling = !_isGrounded && !_isJumping;
+                return true;
+            }
+        }
+
         _isGrounded = hits.Count(x => x.collider != null) > 0;
 
         _isFalling = !_isGrounded && !_isJumping;
@@ -109,6 +125,7 @@ public class Player : MonoBehaviour
     {
         if (_isJumping || !_isGrounded) return;
 
+        _isGrounded = false;
         _currentFallingSpeed = fallingSpeed;
         _lastTransform = transform.position;
         _currentVerticalSpeed = verticalSpeed;
@@ -148,10 +165,25 @@ public class Player : MonoBehaviour
         {
             if (hit.collider.TryGetComponent<Interactable>(out var interactable))
             {
-                interactable.Interact();
+                interactable.Interact(this);
                 return;
             }
         }
 
+    }
+
+    public void Dematerialize()
+    {
+        Debug.Log("demateralizzazione");
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = currentCheckpoit.transform.position;
+    }
+
+    public void SetCheckpoint(Checkpoint checkpoint)
+    {
+        currentCheckpoit = checkpoint;
     }
 }
