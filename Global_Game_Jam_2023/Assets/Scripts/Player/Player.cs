@@ -77,17 +77,14 @@ public class Player : MonoBehaviour
         {
             if(hit.collider.bounds.max.y < groundCheckPivot.position.y)
             {
-                Debug.Log("corr");
                 _isGrounded = true;
                 _isFalling = !_isGrounded && !_isJumping;
                 return true;
             }
         }
+        _isGrounded = false;
 
-        Debug.Log("corr");
-        _isGrounded = hits.Count(x => x.collider != null) > 0;
-
-        _isFalling = !_isGrounded && !_isJumping;
+        _isFalling = !_isJumping;
 
         return _isGrounded;
     }
