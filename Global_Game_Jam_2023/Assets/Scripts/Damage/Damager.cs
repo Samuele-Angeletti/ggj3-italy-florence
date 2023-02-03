@@ -11,4 +11,12 @@ public class Damager : MonoBehaviour
             damageable.Kill();
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.TryGetComponent<Damageable>(out var damageable))
+        {
+            damageable.Kill();
+        }
+    }
 }
