@@ -2,6 +2,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -118,4 +119,19 @@ public class Player : MonoBehaviour
         _currentRunSpeed = active ? runSpeed : 0;
     }
 
+    public void TryGoDown()
+    {
+        if(!_isGrounded) return;
+
+        RaycastHit2D[] hits = new RaycastHit2D[10];
+        Physics2D.BoxCastNonAlloc(groundCheckPivot.position, Vector2.one, 0, Vector2.down, hits, groundCheckDistance, groundCheckLayerMask);
+
+        foreach (var hit in hits.Where(x => x.collider != null))
+        {
+            if(hit.collider.TryGetComponent<PlatformHandler>(out var handler))
+            {
+                handler.FastDisable();
+            }
+        }
+    }
 }

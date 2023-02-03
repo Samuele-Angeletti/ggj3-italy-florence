@@ -71,6 +71,24 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""51a37a95-fbb5-41db-844d-7a676582434d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DownInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""401d8e9c-8a51-4810-9d61-c7b31be0d910"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -89,17 +107,6 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                     ""name"": ""up"",
                     ""id"": ""90d967d4-211f-49db-9579-36213089a0af"",
                     ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WASDMovement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""6b7af6d4-443b-4c29-b1ec-6aef6ac5e3fd"",
-                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -144,17 +151,6 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                     ""name"": ""up"",
                     ""id"": ""db2ebe73-4bfa-427f-a307-e2088fd12b94"",
                     ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ArrowsMovement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""72f7554e-301c-4b1c-8ea9-480e9621d743"",
-                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -214,6 +210,28 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Shift"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcfa1898-02ff-42e8-ab35-74949dfc5c98"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dca4cfed-3355-4edf-ae44-7c4492860810"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DownInteract"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -305,6 +323,8 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_InteractButton = m_Player.FindAction("InteractButton", throwIfNotFound: true);
         m_Player_Shift = m_Player.FindAction("Shift", throwIfNotFound: true);
+        m_Player_SInteract = m_Player.FindAction("SInteract", throwIfNotFound: true);
+        m_Player_DownInteract = m_Player.FindAction("DownInteract", throwIfNotFound: true);
         // PlayerMouse
         m_PlayerMouse = asset.FindActionMap("PlayerMouse", throwIfNotFound: true);
         m_PlayerMouse_LeftMouse = m_PlayerMouse.FindAction("LeftMouse", throwIfNotFound: true);
@@ -376,6 +396,8 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_InteractButton;
     private readonly InputAction m_Player_Shift;
+    private readonly InputAction m_Player_SInteract;
+    private readonly InputAction m_Player_DownInteract;
     public struct PlayerActions
     {
         private @InputSystem m_Wrapper;
@@ -385,6 +407,8 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @InteractButton => m_Wrapper.m_Player_InteractButton;
         public InputAction @Shift => m_Wrapper.m_Player_Shift;
+        public InputAction @SInteract => m_Wrapper.m_Player_SInteract;
+        public InputAction @DownInteract => m_Wrapper.m_Player_DownInteract;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -409,6 +433,12 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                 @Shift.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShift;
                 @Shift.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShift;
                 @Shift.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShift;
+                @SInteract.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSInteract;
+                @SInteract.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSInteract;
+                @SInteract.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSInteract;
+                @DownInteract.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDownInteract;
+                @DownInteract.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDownInteract;
+                @DownInteract.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDownInteract;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -428,6 +458,12 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                 @Shift.started += instance.OnShift;
                 @Shift.performed += instance.OnShift;
                 @Shift.canceled += instance.OnShift;
+                @SInteract.started += instance.OnSInteract;
+                @SInteract.performed += instance.OnSInteract;
+                @SInteract.canceled += instance.OnSInteract;
+                @DownInteract.started += instance.OnDownInteract;
+                @DownInteract.performed += instance.OnDownInteract;
+                @DownInteract.canceled += instance.OnDownInteract;
             }
         }
     }
@@ -513,6 +549,8 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnInteractButton(InputAction.CallbackContext context);
         void OnShift(InputAction.CallbackContext context);
+        void OnSInteract(InputAction.CallbackContext context);
+        void OnDownInteract(InputAction.CallbackContext context);
     }
     public interface IPlayerMouseActions
     {

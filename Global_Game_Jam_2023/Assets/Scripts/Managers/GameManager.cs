@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -50,8 +51,14 @@ public class GameManager : MonoBehaviour
 
         _inputSystem.Player.InteractButton.performed += InteractButtonPerformed;
 
-
+        _inputSystem.Player.SInteract.performed += DownPerformed;
+        _inputSystem.Player.DownInteract.performed += DownPerformed;
         
+    }
+
+    private void DownPerformed(InputAction.CallbackContext obj)
+    {
+        _player.TryGoDown();
     }
 
     private void InteractButtonPerformed(InputAction.CallbackContext obj)
