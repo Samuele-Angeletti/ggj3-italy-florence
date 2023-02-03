@@ -14,7 +14,8 @@ public class Damageable : MonoBehaviour
 
     public void Kill()
     {
-        player.Animator.SetTrigger("Death");
+
+        player.Kill();
     }
 
 

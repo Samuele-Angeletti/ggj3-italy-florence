@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3b3323b9e149f744694d8f3c644ea2ed
+guid: b4058f5fbc93d7b4eae1f3470d469471
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spritesheet_Salti_0
+      name: Spritesheet_Idles_0
       rect:
         serializedVersion: 2
         x: 0
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0becd329a30892449b5f57ba2b18c3e0
-      internalID: -1224094067
+      spriteID: 2d311569e61a593479efd1d73a43a19f
+      internalID: 831210276
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet_Salti_1
+      name: Spritesheet_Idles_1
       rect:
         serializedVersion: 2
         x: 32
@@ -164,14 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 093488ca0d1417d45a572673731ad26c
-      internalID: 601283670
+      spriteID: a9129791d40185c439054cbe9bc1c4f1
+      internalID: 1215221177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet_Salti_2
+      name: Spritesheet_Idles_2
       rect:
         serializedVersion: 2
         x: 0
@@ -185,14 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c37a7dedffebb9e4ab1fa7ad025a116d
-      internalID: -838422231
+      spriteID: 7026139b326ed9e45b45a92493c2ecf6
+      internalID: -2071382032
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet_Salti_3
+      name: Spritesheet_Idles_3
       rect:
         serializedVersion: 2
         x: 32
@@ -206,8 +206,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4df85fbc43a31ba4e9f4440734d74fc8
-      internalID: -843886955
+      spriteID: 702116db2289aa841a7219b7bccee150
+      internalID: -1942569601
       vertices: []
       indices: 
       edges: []
@@ -223,10 +223,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Spritesheet_Salti_1: 601283670
-      Spritesheet_Salti_2: -838422231
-      Spritesheet_Salti_0: -1224094067
-      Spritesheet_Salti_3: -843886955
+      Spritesheet_Idles_1: 1215221177
+      Spritesheet_Idles_2: -2071382032
+      Spritesheet_Idles_0: 831210276
+      Spritesheet_Idles_3: -1942569601
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

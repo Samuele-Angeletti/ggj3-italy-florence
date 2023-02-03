@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     Checkpoint currentCheckpoint;
     Animator _animator;
     Rigidbody2D _rigidbody;
+    SpriteRenderer _spriteRenderer;
     Vector2 _direction;
     Vector2 _jumpDestination;
     Vector2 _lastTransform;
@@ -32,6 +33,11 @@ public class Player : MonoBehaviour
     bool _isJumping;
     bool _isFalling;
     bool _isGrounded;
+    bool _isWalking;
+    bool _isRunning;
+    bool _isDying;
+    bool _isLanding;
+    bool _isIdle;
     float _currentVerticalSpeed;
     float _currentRunSpeed;
     public Animator Animator => _animator;
@@ -40,6 +46,7 @@ public class Player : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Start()
@@ -65,7 +72,14 @@ public class Player : MonoBehaviour
             _direction = new Vector2(_direction.x, -1);
         }
 
+        if (_rigidbody.velocity.x > 0)
+            _spriteRenderer.flipX = false;
+        else if(_rigidbody.velocity.x < 0)
+            _spriteRenderer.flipX = true;
+
         GroundCheck();
+
+        //UpdateAnimator();
     }
 
     private bool GroundCheck()
@@ -78,6 +92,13 @@ public class Player : MonoBehaviour
             if(hit.collider.bounds.max.y < groundCheckPivot.position.y)
             {
                 _isGrounded = true;
+
+                if(_isFalling)
+                {
+                    _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
+                    //SwitchAnimation(EPlayerAnimation.Landing);
+                }
+
                 _isFalling = !_isGrounded && !_isJumping;
                 return true;
             }
@@ -113,6 +134,11 @@ public class Player : MonoBehaviour
     private void HorizontalMove()
     {
         _rigidbody.velocity = (movementSpeed + _currentRunSpeed) * Time.fixedDeltaTime * _direction.normalized;
+        
+        _isRunning = _currentRunSpeed > 0;
+        _isWalking = !_isRunning && (_rigidbody.velocity.x > 0 || _rigidbody.velocity.x < 0 && (!_isJumping || !_isFalling));
+
+        _isIdle = !_isFalling && !_isLanding && !_isJumping && !_isRunning && !_isWalking && !_isDying;
     }
 
     public void Move(Vector2 newDirection)
@@ -179,10 +205,60 @@ public class Player : MonoBehaviour
     public void ResetPosition()
     {
         transform.position = currentCheckpoint.transform.position;
+        GameManager.Instance.EnablePlayerKeyboard(true);
+        _isDying = false;
     }
 
     public void SetCheckpoint(Checkpoint checkpoint)
     {
         currentCheckpoint = checkpoint;
     }
+
+    public void Kill()
+    {
+        GameManager.Instance.EnablePlayerKeyboard(false);
+        _rigidbody.velocity = Vector2.zero;
+        SwitchAnimation(EPlayerAnimation.Death);
+        _isDying = true;
+    }
+
+    public void SwitchAnimation(EPlayerAnimation playerAnimation)
+    {
+        if (_isDying || _isLanding) return;
+
+        if (playerAnimation == EPlayerAnimation.Death)
+            _animator.SetTrigger("Death");
+       else if(playerAnimation == EPlayerAnimation.Landing)
+            _animator.SetTrigger("IsLanding");
+
+
+    }
+
+    //public void UpdateAnimator()
+    //{
+    //    if (_isDying || _isLanding) return;
+
+
+    //    _animator.SetBool("IsJumping", _isJumping);
+    //    _animator.SetBool("IsFalling", _isFalling);
+    //    _animator.SetBool("IsRunning", _isRunning);
+    //    _animator.SetBool("IsWalking", _isWalking);
+    //    _animator.SetBool("IsIdle", _isIdle);
+    //}
+
+    public void LandingComplete()
+    {
+        _isLanding = false;
+    }
+}
+
+public enum EPlayerAnimation
+{
+    Idle,
+    Walking,
+    Running,
+    Jumping,
+    Falling,
+    Landing,
+    Death
 }
