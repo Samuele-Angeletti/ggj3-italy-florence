@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -50,22 +48,25 @@ public class GameManager : MonoBehaviour
         _inputSystem.Player.Shift.started += ShiftStarted;
         _inputSystem.Player.Shift.canceled += ShiftCanceled;
 
-        _inputSystem.Player.EnterButton.performed += EnterButtonPerformed;
+        _inputSystem.Player.InteractButton.performed += InteractButtonPerformed;
 
+
+        
     }
 
-    private void EnterButtonPerformed(InputAction.CallbackContext obj)
+    private void InteractButtonPerformed(InputAction.CallbackContext obj)
     {
 
     }
 
     private void ShiftCanceled(InputAction.CallbackContext obj)
     {
-
+        _player.Run(false);
     }
 
     private void ShiftStarted(InputAction.CallbackContext obj)
     {
+        _player.Run(true);
     }
 
     private void JumpPerformed(InputAction.CallbackContext obj)
@@ -83,5 +84,28 @@ public class GameManager : MonoBehaviour
         _player.Move(obj.ReadValue<Vector2>());
     }
 
+    public void EnablePlayerMovement(bool active)
+    {
+        if (active)
+            _inputSystem.Player.Enable();
+        else
+            _inputSystem.Player.Disable();
+    }
+
+    public void EnablePlayerMouse(bool active)
+    {
+        if (active)
+            _inputSystem.PlayerMouse.Enable();
+        else
+            _inputSystem.PlayerMouse.Disable();
+    }
+
+    public void EnablePlayerKeyboard(bool active)
+    {
+        if (active)
+            _inputSystem.PlayerKeyboard.Enable();
+        else
+            _inputSystem.PlayerKeyboard.Disable();
+    }
 
 }

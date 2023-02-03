@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [Header("Horizontal Movement")]
     [SerializeField] float movementSpeed;
+    [SerializeField] float runSpeed;
     [Header("Jumping")]
     [SerializeField] float verticalSpeed;
     [SerializeField] float verticalMaxDestination;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
     bool _isFalling;
     bool _isGrounded;
     float _currentVerticalSpeed;
+    float _currentRunSpeed;
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -92,7 +94,7 @@ public class Player : MonoBehaviour
 
     private void HorizontalMove()
     {
-        _rigidbody.velocity = movementSpeed * Time.fixedDeltaTime * _direction.normalized;
+        _rigidbody.velocity = (movementSpeed + _currentRunSpeed) * Time.fixedDeltaTime * _direction.normalized;
     }
 
     public void Move(Vector2 newDirection)
@@ -111,5 +113,9 @@ public class Player : MonoBehaviour
         _jumpDestination = transform.position + Vector3.up * verticalMaxDestination;
     }
 
+    public void Run(bool active)
+    {
+        _currentRunSpeed = active ? runSpeed : 0;
+    }
 
 }

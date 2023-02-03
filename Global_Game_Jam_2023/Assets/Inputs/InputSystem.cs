@@ -55,25 +55,7 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""LeftMouse"",
-                    ""type"": ""Button"",
-                    ""id"": ""97804a5e-6288-4b0f-b2a3-fc6a51a2c7ce"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""RightMouse"",
-                    ""type"": ""Button"",
-                    ""id"": ""8825f55b-a261-42e2-aba0-d7481e2caf00"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""EnterButton"",
+                    ""name"": ""InteractButton"",
                     ""type"": ""Button"",
                     ""id"": ""7ff720f6-d62c-4a9c-b22c-afe58822906d"",
                     ""expectedControlType"": ""Button"",
@@ -215,34 +197,12 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a1a254d2-8c77-48ec-8c58-65c18e92ed01"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""LeftMouse"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""687b0eae-22c4-4ea9-87de-90e81b41e7ad"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RightMouse"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""baae456f-0138-4cf0-a628-ff86d00d65f4"",
-                    ""path"": ""<Keyboard>/enter"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EnterButton"",
+                    ""action"": ""InteractButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -258,6 +218,82 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerMouse"",
+            ""id"": ""ba3aa94f-9f1f-4593-a2c9-e8cff1b2aad3"",
+            ""actions"": [
+                {
+                    ""name"": ""LeftMouse"",
+                    ""type"": ""Button"",
+                    ""id"": ""9aba914c-0eec-42b5-b7a4-45ae4f323742"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightMouse"",
+                    ""type"": ""Button"",
+                    ""id"": ""367d89f3-4210-4e50-8558-b65f3a1375db"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""d5d62b0a-cc69-4bbc-8c00-b0e9b8add8fe"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b30bdfa4-803b-4d74-bd1b-fb5194035c44"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""PlayerKeyboard"",
+            ""id"": ""3c33dbd3-f717-41f4-bc76-5ea7a1059060"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""359c0e5e-df48-48fc-b86f-eabdad32be73"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b1879005-764c-4cc0-a71f-14b83406ddb3"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -267,10 +303,15 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         m_Player_WASDMovement = m_Player.FindAction("WASDMovement", throwIfNotFound: true);
         m_Player_ArrowsMovement = m_Player.FindAction("ArrowsMovement", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_LeftMouse = m_Player.FindAction("LeftMouse", throwIfNotFound: true);
-        m_Player_RightMouse = m_Player.FindAction("RightMouse", throwIfNotFound: true);
-        m_Player_EnterButton = m_Player.FindAction("EnterButton", throwIfNotFound: true);
+        m_Player_InteractButton = m_Player.FindAction("InteractButton", throwIfNotFound: true);
         m_Player_Shift = m_Player.FindAction("Shift", throwIfNotFound: true);
+        // PlayerMouse
+        m_PlayerMouse = asset.FindActionMap("PlayerMouse", throwIfNotFound: true);
+        m_PlayerMouse_LeftMouse = m_PlayerMouse.FindAction("LeftMouse", throwIfNotFound: true);
+        m_PlayerMouse_RightMouse = m_PlayerMouse.FindAction("RightMouse", throwIfNotFound: true);
+        // PlayerKeyboard
+        m_PlayerKeyboard = asset.FindActionMap("PlayerKeyboard", throwIfNotFound: true);
+        m_PlayerKeyboard_Newaction = m_PlayerKeyboard.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -333,9 +374,7 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_WASDMovement;
     private readonly InputAction m_Player_ArrowsMovement;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_LeftMouse;
-    private readonly InputAction m_Player_RightMouse;
-    private readonly InputAction m_Player_EnterButton;
+    private readonly InputAction m_Player_InteractButton;
     private readonly InputAction m_Player_Shift;
     public struct PlayerActions
     {
@@ -344,9 +383,7 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         public InputAction @WASDMovement => m_Wrapper.m_Player_WASDMovement;
         public InputAction @ArrowsMovement => m_Wrapper.m_Player_ArrowsMovement;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @LeftMouse => m_Wrapper.m_Player_LeftMouse;
-        public InputAction @RightMouse => m_Wrapper.m_Player_RightMouse;
-        public InputAction @EnterButton => m_Wrapper.m_Player_EnterButton;
+        public InputAction @InteractButton => m_Wrapper.m_Player_InteractButton;
         public InputAction @Shift => m_Wrapper.m_Player_Shift;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -366,15 +403,9 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @LeftMouse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftMouse;
-                @LeftMouse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftMouse;
-                @LeftMouse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftMouse;
-                @RightMouse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightMouse;
-                @RightMouse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightMouse;
-                @RightMouse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightMouse;
-                @EnterButton.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnterButton;
-                @EnterButton.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnterButton;
-                @EnterButton.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnterButton;
+                @InteractButton.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractButton;
+                @InteractButton.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractButton;
+                @InteractButton.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractButton;
                 @Shift.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShift;
                 @Shift.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShift;
                 @Shift.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShift;
@@ -391,15 +422,9 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @LeftMouse.started += instance.OnLeftMouse;
-                @LeftMouse.performed += instance.OnLeftMouse;
-                @LeftMouse.canceled += instance.OnLeftMouse;
-                @RightMouse.started += instance.OnRightMouse;
-                @RightMouse.performed += instance.OnRightMouse;
-                @RightMouse.canceled += instance.OnRightMouse;
-                @EnterButton.started += instance.OnEnterButton;
-                @EnterButton.performed += instance.OnEnterButton;
-                @EnterButton.canceled += instance.OnEnterButton;
+                @InteractButton.started += instance.OnInteractButton;
+                @InteractButton.performed += instance.OnInteractButton;
+                @InteractButton.canceled += instance.OnInteractButton;
                 @Shift.started += instance.OnShift;
                 @Shift.performed += instance.OnShift;
                 @Shift.canceled += instance.OnShift;
@@ -407,14 +432,95 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // PlayerMouse
+    private readonly InputActionMap m_PlayerMouse;
+    private IPlayerMouseActions m_PlayerMouseActionsCallbackInterface;
+    private readonly InputAction m_PlayerMouse_LeftMouse;
+    private readonly InputAction m_PlayerMouse_RightMouse;
+    public struct PlayerMouseActions
+    {
+        private @InputSystem m_Wrapper;
+        public PlayerMouseActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
+        public InputAction @LeftMouse => m_Wrapper.m_PlayerMouse_LeftMouse;
+        public InputAction @RightMouse => m_Wrapper.m_PlayerMouse_RightMouse;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerMouse; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerMouseActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerMouseActions instance)
+        {
+            if (m_Wrapper.m_PlayerMouseActionsCallbackInterface != null)
+            {
+                @LeftMouse.started -= m_Wrapper.m_PlayerMouseActionsCallbackInterface.OnLeftMouse;
+                @LeftMouse.performed -= m_Wrapper.m_PlayerMouseActionsCallbackInterface.OnLeftMouse;
+                @LeftMouse.canceled -= m_Wrapper.m_PlayerMouseActionsCallbackInterface.OnLeftMouse;
+                @RightMouse.started -= m_Wrapper.m_PlayerMouseActionsCallbackInterface.OnRightMouse;
+                @RightMouse.performed -= m_Wrapper.m_PlayerMouseActionsCallbackInterface.OnRightMouse;
+                @RightMouse.canceled -= m_Wrapper.m_PlayerMouseActionsCallbackInterface.OnRightMouse;
+            }
+            m_Wrapper.m_PlayerMouseActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @LeftMouse.started += instance.OnLeftMouse;
+                @LeftMouse.performed += instance.OnLeftMouse;
+                @LeftMouse.canceled += instance.OnLeftMouse;
+                @RightMouse.started += instance.OnRightMouse;
+                @RightMouse.performed += instance.OnRightMouse;
+                @RightMouse.canceled += instance.OnRightMouse;
+            }
+        }
+    }
+    public PlayerMouseActions @PlayerMouse => new PlayerMouseActions(this);
+
+    // PlayerKeyboard
+    private readonly InputActionMap m_PlayerKeyboard;
+    private IPlayerKeyboardActions m_PlayerKeyboardActionsCallbackInterface;
+    private readonly InputAction m_PlayerKeyboard_Newaction;
+    public struct PlayerKeyboardActions
+    {
+        private @InputSystem m_Wrapper;
+        public PlayerKeyboardActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_PlayerKeyboard_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerKeyboard; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerKeyboardActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerKeyboardActions instance)
+        {
+            if (m_Wrapper.m_PlayerKeyboardActionsCallbackInterface != null)
+            {
+                @Newaction.started -= m_Wrapper.m_PlayerKeyboardActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_PlayerKeyboardActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_PlayerKeyboardActionsCallbackInterface.OnNewaction;
+            }
+            m_Wrapper.m_PlayerKeyboardActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+            }
+        }
+    }
+    public PlayerKeyboardActions @PlayerKeyboard => new PlayerKeyboardActions(this);
     public interface IPlayerActions
     {
         void OnWASDMovement(InputAction.CallbackContext context);
         void OnArrowsMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnInteractButton(InputAction.CallbackContext context);
+        void OnShift(InputAction.CallbackContext context);
+    }
+    public interface IPlayerMouseActions
+    {
         void OnLeftMouse(InputAction.CallbackContext context);
         void OnRightMouse(InputAction.CallbackContext context);
-        void OnEnterButton(InputAction.CallbackContext context);
-        void OnShift(InputAction.CallbackContext context);
+    }
+    public interface IPlayerKeyboardActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }
