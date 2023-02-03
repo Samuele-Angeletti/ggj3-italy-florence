@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     [SerializeField] float maxFallingSpeed;
     [Header("Interactable Settings")]
     [SerializeField] float radius;
-    Checkpoint currentCheckpoit;
+    Checkpoint currentCheckpoint;
     Animator _animator;
     Rigidbody2D _rigidbody;
     Vector2 _direction;
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     float _currentVerticalSpeed;
     float _currentRunSpeed;
     public Animator Animator => _animator;
-    public Checkpoint Checkpoint => currentCheckpoit;
+    public Checkpoint Checkpoint => currentCheckpoint;
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -178,11 +178,11 @@ public class Player : MonoBehaviour
 
     public void ResetPosition()
     {
-        transform.position = currentCheckpoit.transform.position;
+        transform.position = currentCheckpoint.transform.position;
     }
 
     public void SetCheckpoint(Checkpoint checkpoint)
     {
-        currentCheckpoit = checkpoint;
+        currentCheckpoint = checkpoint;
     }
 }
