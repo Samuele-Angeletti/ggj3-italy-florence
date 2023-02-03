@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     [SerializeField] float fallingSpeed;
     [SerializeField] float fallingSpeedAccelerator;
     [SerializeField] float maxFallingSpeed;
+    [Header("Interactable Settings")]
+    [SerializeField] float radius;
     Rigidbody2D _rigidbody;
     Vector2 _direction;
     Vector2 _jumpDestination;
@@ -64,7 +66,7 @@ public class Player : MonoBehaviour
     private bool GroundCheck()
     {
         RaycastHit2D[] hits = new RaycastHit2D[10];
-        Physics2D.RaycastNonAlloc(groundCheckPivot.position, Vector2.down, hits, groundCheckDistance, groundCheckLayerMask);
+        Physics2D.BoxCastNonAlloc(groundCheckPivot.position, new Vector2(0.5f, groundCheckDistance), 0, Vector2.down, hits, 0, groundCheckLayerMask);
         _isGrounded = hits.Count(x => x.collider != null) > 0;
 
         _isFalling = !_isGrounded && !_isJumping;
@@ -133,5 +135,23 @@ public class Player : MonoBehaviour
                 handler.FastDisable();
             }
         }
+    }
+
+    public void TryInteract()
+    {
+        if (!_isGrounded) return;
+
+        RaycastHit2D[] hits = new RaycastHit2D[10];
+        Physics2D.CircleCastNonAlloc(transform.position + new Vector3(0, 0.5f, 0), radius, Vector2.zero, hits, groundCheckDistance, groundCheckLayerMask);
+
+        foreach (var hit in hits.Where(x => x.collider != null))
+        {
+            if (hit.collider.TryGetComponent<Interactable>(out var interactable))
+            {
+                interactable.Interact();
+                return;
+            }
+        }
+
     }
 }

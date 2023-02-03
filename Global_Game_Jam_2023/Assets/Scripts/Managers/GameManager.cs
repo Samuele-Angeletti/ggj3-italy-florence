@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     private void InteractButtonPerformed(InputAction.CallbackContext obj)
     {
-
+        _player.TryInteract();
     }
 
     private void ShiftCanceled(InputAction.CallbackContext obj)
