@@ -25,6 +25,8 @@ public class Interactable : MonoBehaviour
 
         OnInteract.Invoke();
     }
+
+
 }
 
 public enum EPowerUp
