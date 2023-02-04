@@ -64,6 +64,8 @@ public class Player : MonoBehaviour
         }
         set
         {
+            UIManager.Instance.UpdateKeys(value > _passwordCount);
+
             _passwordCount = value;
         }
     }
@@ -98,9 +100,9 @@ public class Player : MonoBehaviour
     {
         StateMachine.OnUpdate();
 
-        if (_rigidbody.velocity.x > 0)
+        if (_direction.x > 0)
             _spriteRenderer.flipX = false;
-        else if (_rigidbody.velocity.x < 0)
+        else if (_direction.x < 0)
             _spriteRenderer.flipX = true;
 
     }

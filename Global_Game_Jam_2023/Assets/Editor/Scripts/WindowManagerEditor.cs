@@ -38,6 +38,23 @@ public class WindowManagerEditor : Editor
                 }
             }
 
+            foreach(var collider in windowsManager.InsideColliderList)
+            {
+                var renderer = collider.gameObject.SearchComponent<SpriteRenderer>();
+                if(renderer != null)
+                {
+                    renderer.sortingLayerName = windowsManager.SpriteRenderer.sortingLayerName;
+                    renderer.sortingOrder = windowsManager.SpriteRenderer.sortingOrder + 1;
+                }
+
+                var canvas = collider.gameObject.SearchComponent<Canvas>();
+                if(canvas != null)
+                {
+                    canvas.sortingLayerName = windowsManager.SpriteRenderer.sortingLayerName;
+                    canvas.sortingOrder = windowsManager.SpriteRenderer.sortingOrder + 1;
+                }
+            }
+
             EditorUtility.SetDirty(windowsManager);
         }
     }
