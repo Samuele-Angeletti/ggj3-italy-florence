@@ -152,6 +152,7 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
+  windowDestination: {fileID: 0}
 --- !u!1 &4497833447751555755
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +297,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1049737679
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &8845691651097167376
