@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 4368369396638782932}
   - component: {fileID: 6201888964758602292}
   - component: {fileID: 6308390544222986711}
+  - component: {fileID: 2488772894618629260}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -185,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf4e773058f14014d83c5573cc6398a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  graphics: {fileID: 4368369395763470385}
   movementSpeed: 300
   runSpeed: 350
   verticalSpeed: 700
@@ -198,7 +200,18 @@ MonoBehaviour:
   fallingSpeed: 60
   fallingSpeedAccelerator: 45
   maxFallingSpeed: 800
-  radius: 0
+  radius: 1
+  dematerializePrefab: {fileID: 8510886939290579705, guid: 9ff70af68a3725541be84f05828a4c51,
+    type: 3}
+  materializePrefab: {fileID: 8510886939290579705, guid: 9ff70af68a3725541be84f05828a4c51,
+    type: 3}
+  timeBetweenRespawn: 1
+  JumpDestination: {x: 0, y: 0}
+  LastTransform: {x: 0, y: 0}
+  IsJumping: 0
+  IsFalling: 0
+  Landed: 0
+  Interacting: 0
 --- !u!114 &6201888964758602292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,3 +244,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &2488772894618629260
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4368369396638782952}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.051560283, y: 0.4942541}
+  m_Size: {x: 0.6593678, y: 0.994755}
+  m_Direction: 0

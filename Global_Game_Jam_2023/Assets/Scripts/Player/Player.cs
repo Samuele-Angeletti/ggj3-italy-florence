@@ -6,6 +6,8 @@ using System;
 
 public class Player : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] GameObject graphics;
     [Header("Horizontal Movement")]
     [SerializeField] float movementSpeed;
     [SerializeField] float runSpeed;
@@ -22,6 +24,11 @@ public class Player : MonoBehaviour
     [SerializeField] float maxFallingSpeed;
     [Header("Interactable Settings")]
     [SerializeField] float radius;
+    [Header("VFX")]
+    [SerializeField] ParticleSystem dematerializePrefab;
+    [SerializeField] ParticleSystem materializePrefab;
+    [SerializeField] float timeBetweenRespawn;
+
     Checkpoint currentCheckpoint;
     Animator _animator;
     Rigidbody2D _rigidbody;
@@ -41,6 +48,7 @@ public class Player : MonoBehaviour
     public Checkpoint Checkpoint => currentCheckpoint;
     private Vector3 _firstPosition;
 
+    bool _wasDematerialize;
     public bool IsRunning => _currentRunSpeed > 0;
     public bool Landed;
     public bool Interacting;
@@ -226,8 +234,17 @@ public class Player : MonoBehaviour
 
     public void Dematerialize(Checkpoint newCheckPoint)
     {
+        var particle = Instantiate(dematerializePrefab, new Vector3(transform.position.x, transform.position.y, -0.1f), Quaternion.identity);
+        Destroy(particle.gameObject, 2f);
+
+        _wasDematerialize = true;
+
+        graphics.SetActive(false);
+
         SetCheckpoint(newCheckPoint);
-        ResetPosition();
+        GameManager.Instance.EnablePlayerKeyboard(false);
+        Invoke(nameof(ResetPosition), timeBetweenRespawn);
+        Invoke(nameof(InteractComplete), timeBetweenRespawn);
     }
 
     public void ResetPosition()
@@ -235,6 +252,13 @@ public class Player : MonoBehaviour
         transform.position = currentCheckpoint != null ? currentCheckpoint.transform.position : _firstPosition;
         GameManager.Instance.EnablePlayerKeyboard(true);
         _isDying = false;
+
+        if (_wasDematerialize)
+        {
+            _wasDematerialize = false;
+
+            Materialize();
+        }
     }
 
     public void SetCheckpoint(Checkpoint checkpoint)
@@ -255,10 +279,19 @@ public class Player : MonoBehaviour
     public void InteractComplete()
     {
         Interacting = false;
+
     }
 
     public void LandingComplete()
     {
         Landed = true;
+    }
+
+    public void Materialize()
+    {
+        var particle = Instantiate(materializePrefab, new Vector3(transform.position.x, transform.position.y, -0.1f), Quaternion.identity);
+        Destroy(particle.gameObject, 2f);
+        graphics.SetActive(true);
+
     }
 }
