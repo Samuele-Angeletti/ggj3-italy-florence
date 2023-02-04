@@ -2298,7 +2298,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 146092669}
     m_RemovedComponents: []
+<<<<<<< Updated upstream
   m_SourcePrefab: {fileID: 100100000, guid: 0b6906dc5fca1074ea56eace1734b632, type: 3}
+=======
+  m_SourcePrefab: {fileID: 100100000, guid: 6d70c507c0750984e98cf267139e8818, type: 3}
+--- !u!1 &1252543460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5518460097104775401, guid: aa5d879c3addbb84c96842b64dd7c955,
+    type: 3}
+  m_PrefabInstance: {fileID: 5518460097207044227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1252543464
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252543460}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 658d3d0e96ad6494ea5018b851b7ffde, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+>>>>>>> Stashed changes
 --- !u!1001 &1265029453
 PrefabInstance:
   m_ObjectHideFlags: 0
