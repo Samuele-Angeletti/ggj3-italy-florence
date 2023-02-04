@@ -27,11 +27,11 @@ public class Player : MonoBehaviour
     Rigidbody2D _rigidbody;
     SpriteRenderer _spriteRenderer;
     Vector2 _direction;
-    Vector2 _jumpDestination;
-    Vector2 _lastTransform;
+    [HideInInspector] public Vector2 JumpDestination;
+    [HideInInspector] public Vector2 LastTransform;
     float _currentFallingSpeed;
-    bool _isJumping;
-    bool _isFalling;
+    public bool IsJumping;
+    public bool IsFalling;
     bool _isGrounded;
     bool _isWalking;
     bool _isRunning;
@@ -44,6 +44,14 @@ public class Player : MonoBehaviour
     public Animator Animator => _animator;
     public Checkpoint Checkpoint => currentCheckpoint;
     private Vector3 _firstPosition;
+
+    public bool IsRunning => _currentRunSpeed > 0;
+    public bool Landed => _isLanding;
+    public bool Interacting;
+    public bool Dying => _isDying;
+    public Vector2 Direction => _direction;
+    public GenericStateMachine<EPlayerState> StateMachine;
+    string _currentState;
     public int PasswordCount
     {
         get
@@ -62,98 +70,108 @@ public class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _firstPosition = transform.position;
+
+        StateMachine = new GenericStateMachine<EPlayerState>();
+
+        StateMachine.RegisterState(EPlayerState.Idle, new IdleCharacterState(this));
+        StateMachine.RegisterState(EPlayerState.Walking, new WalkingCharacterState(this));
+        StateMachine.RegisterState(EPlayerState.Running, new RunningPlayerState(this));
+        StateMachine.RegisterState(EPlayerState.Jumping, new JumpingCharacterState(this));
+        StateMachine.RegisterState(EPlayerState.Falling, new FallingCharacterState(this));
+        StateMachine.RegisterState(EPlayerState.Interacting, new InteractingCharacterState(this));
+        StateMachine.RegisterState(EPlayerState.Landing, new LandedCharacterState(this));
+        StateMachine.RegisterState(EPlayerState.Dying, new DyingPlayerState(this));
+
+        StateMachine.SetState(EPlayerState.Idle);
     }
 
     private void Start()
     {
-        _isFalling = !GroundCheck();
+        IsFalling = !GroundCheck();
     }
 
     private void Update()
     {
-        if(_isJumping)
-        {
-            if(transform.position.y > _jumpDestination.y || transform.position.y < _lastTransform.y)
-            {
-                _isJumping = false;
-                _isFalling = true;
-                GroundCheck();
-            }
-            _lastTransform = transform.position;
+        StateMachine.OnUpdate();
+        _currentState = StateMachine.CurrentState.ToString();
 
-        }
-        else if(_isFalling)
-        {
-            _direction = new Vector2(_direction.x, -1);
-        }
+        //if(IsJumping)
+        //{
+        //    if(transform.position.y > JumpDestination.y || transform.position.y < LastTransform.y)
+        //    {
+        //        IsJumping = false;
+        //        IsFalling = true;
+        //        GroundCheck();
+        //    }
+        //    LastTransform = transform.position;
+
+        //}
+        //else if(_isFalling)
+        //{
+        //    _direction = new Vector2(_direction.x, -1);
+        //}
 
         if (_rigidbody.velocity.x > 0)
             _spriteRenderer.flipX = false;
-        else if(_rigidbody.velocity.x < 0)
+        else if (_rigidbody.velocity.x < 0)
             _spriteRenderer.flipX = true;
 
-        GroundCheck();
+        //GroundCheck();
 
         //UpdateAnimator();
     }
 
-    private bool GroundCheck()
+    public bool GroundCheck()
     {
         RaycastHit2D[] hits = new RaycastHit2D[10];
         Physics2D.BoxCastNonAlloc(groundCheckPivot.position, new Vector2(0.5f, groundCheckDistance), 0, Vector2.down, hits, 0, groundCheckLayerMask);
 
         foreach (var hit in hits.Where(x => x.collider != null))
         {
-            if(hit.collider.bounds.max.y < groundCheckPivot.position.y)
+            if (hit.collider.bounds.max.y < groundCheckPivot.position.y)
             {
                 _isGrounded = true;
 
-                if(_isFalling)
+                if (IsFalling)
                 {
                     _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
                     //SwitchAnimation(EPlayerAnimation.Landing);
                 }
 
-                _isFalling = !_isGrounded && !_isJumping;
+                IsFalling = !_isGrounded && !IsJumping;
                 return true;
             }
         }
         _isGrounded = false;
 
-        _isFalling = !_isJumping;
+        IsFalling = !IsJumping;
 
         return _isGrounded;
     }
 
     private void FixedUpdate()
     {
-        HorizontalMove();
-        VerticalMove();
+        StateMachine.OnFixedUpdate();
     }
 
-    private void VerticalMove()
+    public void VerticalMove()
     {
-        if(_isJumping)
+        if (IsJumping)
         {
             _direction = new Vector2(_direction.x, 1);
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, (_currentVerticalSpeed * Time.fixedDeltaTime * _direction).y);
             _currentVerticalSpeed -= verticalSpeedDecelerator;
         }
-        if(_isFalling)
+        if (IsFalling)
         {
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, (_currentFallingSpeed * Time.fixedDeltaTime * _direction).y);
             _currentFallingSpeed = Mathf.Clamp(_currentFallingSpeed + fallingSpeedAccelerator, 0, maxFallingSpeed);
         }
     }
 
-    private void HorizontalMove()
+    public void HorizontalMove()
     {
         _rigidbody.velocity = (movementSpeed + _currentRunSpeed) * Time.fixedDeltaTime * _direction.normalized;
-        
-        _isRunning = _currentRunSpeed > 0;
-        _isWalking = !_isRunning && (_rigidbody.velocity.x > 0 || _rigidbody.velocity.x < 0 && (!_isJumping || !_isFalling));
-
-        _isIdle = !_isFalling && !_isLanding && !_isJumping && !_isRunning && !_isWalking && !_isDying;
     }
 
     public void Move(Vector2 newDirection)
@@ -163,14 +181,14 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
-        if (_isJumping || !_isGrounded) return;
+        if (IsJumping || !_isGrounded) return;
 
         _isGrounded = false;
         _currentFallingSpeed = fallingSpeed;
-        _lastTransform = transform.position;
+        LastTransform = transform.position;
         _currentVerticalSpeed = verticalSpeed;
-        _isJumping = true;
-        _jumpDestination = transform.position + Vector3.up * verticalMaxDestination;
+        IsJumping = true;
+        JumpDestination = transform.position + Vector3.up * verticalMaxDestination;
     }
 
     public void Run(bool active)
@@ -180,14 +198,14 @@ public class Player : MonoBehaviour
 
     public void TryGoDown()
     {
-        if(!_isGrounded) return;
+        if (!_isGrounded) return;
 
         RaycastHit2D[] hits = new RaycastHit2D[10];
         Physics2D.BoxCastNonAlloc(groundCheckPivot.position, Vector2.one, 0, Vector2.down, hits, groundCheckDistance, groundCheckLayerMask);
 
         foreach (var hit in hits.Where(x => x.collider != null))
         {
-            if(hit.collider.TryGetComponent<PlatformHandler>(out var handler))
+            if (hit.collider.TryGetComponent<PlatformHandler>(out var handler))
             {
                 handler.FastDisable();
             }
@@ -198,6 +216,13 @@ public class Player : MonoBehaviour
     {
         if (!_isGrounded) return;
 
+        StateMachine.SetState(EPlayerState.Interacting);
+        Interacting = true;
+
+    }
+
+    public bool Interact()
+    {
         RaycastHit2D[] hits = new RaycastHit2D[10];
         Physics2D.CircleCastNonAlloc(transform.position + new Vector3(0, 0.5f, 0), radius, Vector2.zero, hits, groundCheckDistance, groundCheckLayerMask);
 
@@ -205,11 +230,12 @@ public class Player : MonoBehaviour
         {
             if (hit.collider.TryGetComponent<Interactable>(out var interactable))
             {
+
                 interactable.Interact(this);
-                return;
+                return true;
             }
         }
-
+        return false;
     }
 
     public void Dematerialize()
@@ -233,47 +259,20 @@ public class Player : MonoBehaviour
     {
         GameManager.Instance.EnablePlayerKeyboard(false);
         _rigidbody.velocity = Vector2.zero;
-        SwitchAnimation(EPlayerAnimation.Death);
+
+        StateMachine.SetState(EPlayerState.Dying);
+
         _isDying = true;
     }
 
-    public void SwitchAnimation(EPlayerAnimation playerAnimation)
+
+    public void InteractComplete()
     {
-        if (_isDying || _isLanding) return;
-
-        if (playerAnimation == EPlayerAnimation.Death)
-            _animator.SetTrigger("Death");
-       else if(playerAnimation == EPlayerAnimation.Landing)
-            _animator.SetTrigger("IsLanding");
-
-
+        Interacting = true;
     }
-
-    //public void UpdateAnimator()
-    //{
-    //    if (_isDying || _isLanding) return;
-
-
-    //    _animator.SetBool("IsJumping", _isJumping);
-    //    _animator.SetBool("IsFalling", _isFalling);
-    //    _animator.SetBool("IsRunning", _isRunning);
-    //    _animator.SetBool("IsWalking", _isWalking);
-    //    _animator.SetBool("IsIdle", _isIdle);
-    //}
 
     public void LandingComplete()
     {
-        _isLanding = false;
+        _isLanding = true;
     }
-}
-
-public enum EPlayerAnimation
-{
-    Idle,
-    Walking,
-    Running,
-    Jumping,
-    Falling,
-    Landing,
-    Death
 }
