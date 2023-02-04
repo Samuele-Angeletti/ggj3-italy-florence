@@ -253,6 +253,9 @@ public class Player : MonoBehaviour
         GameManager.Instance.EnablePlayerKeyboard(true);
         _isDying = false;
 
+        _rigidbody.bodyType = RigidbodyType2D.Dynamic;
+        _rigidbody.velocity = Vector2.zero;
+        _direction = Vector2.zero;
         if (_wasDematerialize)
         {
             _wasDematerialize = false;
@@ -270,6 +273,9 @@ public class Player : MonoBehaviour
     {
         GameManager.Instance.EnablePlayerKeyboard(false);
         _rigidbody.velocity = Vector2.zero;
+        _direction = Vector2.zero;
+
+        _rigidbody.bodyType = RigidbodyType2D.Kinematic;
 
         StateMachine.SetState(EPlayerState.Dying);
 
