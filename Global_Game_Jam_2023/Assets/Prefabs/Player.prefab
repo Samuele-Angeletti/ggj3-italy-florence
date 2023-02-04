@@ -191,7 +191,7 @@ MonoBehaviour:
   graphics: {fileID: 4368369395763470385}
   movementSpeed: 300
   runSpeed: 350
-  verticalSpeed: 900
+  verticalSpeed: 850
   verticalMaxDestination: 8
   verticalSpeedDecelerator: 60
   groundCheckPivot: {fileID: 4368369395955852165}
