@@ -24,8 +24,6 @@ public class InteractingCharacterState : State
 
     public override void OnStart()
     {
-        _Owner.Animator.SetTrigger("IsInteracting");
-        
         _Owner.Interacting = _Owner.Interact();
     }
 

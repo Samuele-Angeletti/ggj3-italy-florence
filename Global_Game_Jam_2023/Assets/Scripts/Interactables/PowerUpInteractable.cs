@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUpInteractable : Interactable
 {
     [SerializeField] EPowerUp typeToActive;
-
+    Player Player;
     public override void Interact(Player player)
     {
         base.Interact(player);
@@ -22,7 +22,14 @@ public class PowerUpInteractable : Interactable
                 GameManager.Instance.EnablePlayerKeyboard(true);
                 break;
         }
+        Player = player;
+        Invoke(nameof(DelayMethod), 0.1f);
 
+    }
+
+    public void DelayMethod()
+    {
+        Player.Interacting = false;
         Destroy(gameObject);
     }
 }

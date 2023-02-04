@@ -42,10 +42,11 @@ public class UIManager : MonoBehaviour
     private const string linkBase = @"C:\";
 
     private string currentLink = @"Desktop\";
-
+    Animator Animator;
     private void Awake()
     {
         keys = new Queue<GameObject>();
+        Animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -98,4 +99,21 @@ public class UIManager : MonoBehaviour
         }
         return false;
     }
+
+    public void StartGame()
+    {
+        GameManager.Instance.StartGame();
+    }
+
+    public void SpawnPlayer()
+    {
+        GameManager.Instance.SpawnPlayer();
+
+    }
+
+    public void SetTrigger()
+    {
+        Animator.SetTrigger("Start");
+    }
+
 }

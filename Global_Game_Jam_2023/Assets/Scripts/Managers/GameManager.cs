@@ -63,13 +63,20 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        StartGame();
+
     }
 
     public void StartGame()
     {
         EnableMouseDragAndDrop(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 
+    public void SpawnPlayer()
+    {
+
+        _player.gameObject.SetActive(true);
     }
 
     private void DownPerformed(InputAction.CallbackContext obj)
@@ -128,14 +135,6 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-        if(_folderClickList != null)
-        foreach (var x in _folderClickList)
-        {
-            if(x != null && x.Button != null)
-            {
-                x.Button.interactable = active;
-            }
-        }
 
         _player.DragAndDropAvailable = true;
     }
@@ -175,4 +174,9 @@ public class GameManager : MonoBehaviour
         _player.KeyboardTypeAvailable = active;
     }
 
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }

@@ -23,6 +23,7 @@ public class DragAndDropPlayerState : State
 
     public override void OnStart()
     {
+        _Owner.Animator.SetTrigger("Drag");
         mainCam = Camera.main;
     }
 
