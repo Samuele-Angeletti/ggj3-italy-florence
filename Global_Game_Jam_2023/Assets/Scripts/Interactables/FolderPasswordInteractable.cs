@@ -12,6 +12,7 @@ public class FolderPasswordInteractable : Interactable
 
     public override void Interact(Player player)
     {
+        base.Interact(player);
         if (player.PasswordCount > 0 || !islocked)
         {
             if(islocked)
