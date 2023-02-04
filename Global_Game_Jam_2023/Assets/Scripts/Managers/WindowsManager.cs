@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class WindowsManager : MonoBehaviour
 {
+    public Checkpoint CheckPoint;
+
     public List<Collider2D> InsideColliderList;
+
 }

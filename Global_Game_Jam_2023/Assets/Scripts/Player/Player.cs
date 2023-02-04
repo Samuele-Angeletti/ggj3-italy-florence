@@ -200,7 +200,7 @@ public class Player : MonoBehaviour
 
     public void TryInteract()
     {
-        if (!_isGrounded) return;
+        if (!_isGrounded || Interacting) return;
 
         StateMachine.SetState(EPlayerState.Interacting);
         Interacting = true;
@@ -224,9 +224,10 @@ public class Player : MonoBehaviour
         return false;
     }
 
-    public void Dematerialize()
+    public void Dematerialize(Checkpoint newCheckPoint)
     {
-        Debug.Log("demateralizzazione");
+        SetCheckpoint(newCheckPoint);
+        ResetPosition();
     }
 
     public void ResetPosition()
@@ -253,7 +254,7 @@ public class Player : MonoBehaviour
 
     public void InteractComplete()
     {
-        Interacting = true;
+        Interacting = false;
     }
 
     public void LandingComplete()
