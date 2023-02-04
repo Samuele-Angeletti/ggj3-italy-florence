@@ -189,9 +189,9 @@ MonoBehaviour:
   graphics: {fileID: 4368369395763470385}
   movementSpeed: 300
   runSpeed: 350
-  verticalSpeed: 700
+  verticalSpeed: 900
   verticalMaxDestination: 8
-  verticalSpeedDecelerator: 80
+  verticalSpeedDecelerator: 60
   groundCheckPivot: {fileID: 4368369395955852165}
   groundCheckDistance: 0.2
   groundCheckLayerMask:
@@ -199,7 +199,7 @@ MonoBehaviour:
     m_Bits: 8
   fallingSpeed: 60
   fallingSpeedAccelerator: 45
-  maxFallingSpeed: 800
+  maxFallingSpeed: 500
   radius: 1
   dematerializePrefab: {fileID: 8510886939290579705, guid: 9ff70af68a3725541be84f05828a4c51,
     type: 3}
