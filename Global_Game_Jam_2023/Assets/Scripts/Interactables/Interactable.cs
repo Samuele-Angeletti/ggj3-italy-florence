@@ -20,7 +20,16 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact(Player player)
     {
-        UIManager.Instance.AddText(FolderName);
+        if(!string.IsNullOrEmpty(FolderName))
+            UIManager.Instance.AddText(FolderName);
+
         OnInteract.Invoke();
     }
+}
+
+public enum EPowerUp
+{
+    DragAndDrop,
+    ClickOnFolder,
+    TypeKeyboard
 }

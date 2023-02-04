@@ -7,6 +7,10 @@ public class WindowsManager : MonoBehaviour
     public SpriteRenderer SpriteRenderer;
     public Checkpoint CheckPoint;
 
+    public bool DragAndDropAvailable;
+    public bool ClickAvailable;
+    public bool KeyboardTypeAvailable;
+
     public List<Collider2D> InsideColliderList;
     public List<Collider2D> Walls;
     private void Start()
@@ -30,5 +34,9 @@ public class WindowsManager : MonoBehaviour
     private void OnEnable()
     {
         EnableColliders(true);
+
+        GameManager.Instance.EnableMouseDragAndDrop(GameManager.Instance.Player.DragAndDropAvailable && DragAndDropAvailable);
+        GameManager.Instance.EnableMouseDragAndDrop(GameManager.Instance.Player.ClickAvailable && ClickAvailable);
+        GameManager.Instance.EnableMouseDragAndDrop(GameManager.Instance.Player.KeyboardTypeAvailable && KeyboardTypeAvailable);
     }
 }
