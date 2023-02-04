@@ -1250,6 +1250,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4497833447751555765, guid: 2808b44552439eb46b2754a4ba99ff29,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4497833447751555765, guid: 2808b44552439eb46b2754a4ba99ff29,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1975075845
+      objectReference: {fileID: 0}
     - target: {fileID: 8520601953013142785, guid: 2808b44552439eb46b2754a4ba99ff29,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -2080,16 +2090,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4368369395763470399, guid: d099acb78fb539146bd8ffbf95e78c7d,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4368369395763470399, guid: d099acb78fb539146bd8ffbf95e78c7d,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: -384834201
-      objectReference: {fileID: 0}
     - target: {fileID: 4368369396638782933, guid: d099acb78fb539146bd8ffbf95e78c7d,
         type: 3}
       propertyPath: m_RootOrder
@@ -2149,11 +2149,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4368369396638782952, guid: d099acb78fb539146bd8ffbf95e78c7d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d099acb78fb539146bd8ffbf95e78c7d, type: 3}

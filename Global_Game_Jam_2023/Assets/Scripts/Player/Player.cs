@@ -28,7 +28,8 @@ public class Player : MonoBehaviour
     [SerializeField] ParticleSystem dematerializePrefab;
     [SerializeField] ParticleSystem materializePrefab;
     [SerializeField] float timeBetweenRespawn;
-
+    [Header("SFX")]
+    [SerializeField] AudioSource audioSource;
     Checkpoint currentCheckpoint;
     Animator _animator;
     Rigidbody2D _rigidbody;
@@ -239,6 +240,8 @@ public class Player : MonoBehaviour
 
         _wasDematerialize = true;
 
+        audioSource.Play();
+
         graphics.SetActive(false);
 
         SetCheckpoint(newCheckPoint);
@@ -299,5 +302,8 @@ public class Player : MonoBehaviour
         var particle = Instantiate(materializePrefab, new Vector3(transform.position.x, transform.position.y, -0.1f), Quaternion.identity);
         Destroy(particle.gameObject, 2f);
         graphics.SetActive(true);
+
+
+        audioSource.Play();
     }
 }
