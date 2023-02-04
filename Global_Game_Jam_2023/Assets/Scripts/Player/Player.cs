@@ -250,7 +250,7 @@ public class Player : MonoBehaviour
     public void ResetPosition()
     {
         transform.position = currentCheckpoint != null ? currentCheckpoint.transform.position : _firstPosition;
-        GameManager.Instance.EnablePlayerKeyboard(true);
+        GameManager.Instance.EnablePlayerMovement(true);
         _isDying = false;
 
         _rigidbody.bodyType = RigidbodyType2D.Dynamic;
@@ -271,7 +271,7 @@ public class Player : MonoBehaviour
 
     public void Kill()
     {
-        GameManager.Instance.EnablePlayerKeyboard(false);
+        GameManager.Instance.EnablePlayerMovement(false);
         _rigidbody.velocity = Vector2.zero;
         _direction = Vector2.zero;
 
@@ -299,6 +299,5 @@ public class Player : MonoBehaviour
         var particle = Instantiate(materializePrefab, new Vector3(transform.position.x, transform.position.y, -0.1f), Quaternion.identity);
         Destroy(particle.gameObject, 2f);
         graphics.SetActive(true);
-
     }
 }

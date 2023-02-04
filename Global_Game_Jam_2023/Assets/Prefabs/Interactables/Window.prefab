@@ -111,6 +111,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CheckPoint: {fileID: 2959942139114762638}
   InsideColliderList: []
+  Walls:
+  - {fileID: 7690821469376322919}
+  - {fileID: 5012174824763214150}
+  - {fileID: 5461377103266837933}
+  - {fileID: 1876673191204907333}
 --- !u!1 &3135892495612552297
 GameObject:
   m_ObjectHideFlags: 0
