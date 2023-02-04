@@ -678,7 +678,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1618592979}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1270752214}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf4e773058f14014d83c5573cc6398a8, type: 3}
@@ -1913,6 +1913,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1270752214 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4368369396638782952, guid: d099acb78fb539146bd8ffbf95e78c7d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1618592979}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1270752217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270752214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1287075952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2359,6 +2394,28 @@ BoxCollider2D:
     type: 3}
   m_PrefabInstance: {fileID: 1347669999}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1676070278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 500648010796979459, guid: 7f439477c03ddb54686bc43d51577d8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 616258932}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1676070279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676070278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!61 &1890763319 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 4497833447533146127, guid: 2808b44552439eb46b2754a4ba99ff29,

@@ -5,12 +5,18 @@ using UnityEngine;
 public class FolderPasswordInteractable : Interactable
 {
     [SerializeField] WindowsManager windowDestination;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] Sprite normalFolder;
+
+    bool islocked = true;
 
     public override void Interact(Player player)
     {
-        if (player.PasswordCount > 0)
+        if (player.PasswordCount > 0 || !islocked)
         {
             player.PasswordCount--;
+            islocked = false;
+            spriteRenderer.sprite = normalFolder;
             player.Dematerialize(windowDestination.CheckPoint);
         }
         else
