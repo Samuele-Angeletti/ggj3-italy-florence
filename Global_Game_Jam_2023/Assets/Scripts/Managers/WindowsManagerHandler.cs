@@ -17,4 +17,11 @@ public class WindowsManagerHandler : MonoBehaviour
         }
         CurrentActive.gameObject.SetActive(true);
     }
+
+    public void CloseCurrent()
+    {
+        CurrentActive.gameObject.SetActive(false);
+        CurrentActive = windowsManagerList.FindLast(x => x.gameObject.activeSelf);
+        CurrentActive.EnableColliders(true);
+    }
 }
