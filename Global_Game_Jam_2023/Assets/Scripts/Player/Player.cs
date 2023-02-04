@@ -40,13 +40,28 @@ public class Player : MonoBehaviour
     bool _isIdle;
     float _currentVerticalSpeed;
     float _currentRunSpeed;
+    int _passwordCount;
     public Animator Animator => _animator;
     public Checkpoint Checkpoint => currentCheckpoint;
+    private Vector3 _firstPosition;
+    public int PasswordCount
+    {
+        get
+        {
+            return _passwordCount;
+        }
+        set
+        {
+            _passwordCount = value;
+        }
+    }
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _firstPosition = transform.position;
     }
 
     private void Start()
@@ -204,7 +219,7 @@ public class Player : MonoBehaviour
 
     public void ResetPosition()
     {
-        transform.position = currentCheckpoint.transform.position;
+        transform.position = currentCheckpoint != null ? currentCheckpoint.transform.position : _firstPosition;
         GameManager.Instance.EnablePlayerKeyboard(true);
         _isDying = false;
     }
