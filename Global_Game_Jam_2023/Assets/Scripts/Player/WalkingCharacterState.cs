@@ -18,6 +18,12 @@ public class WalkingCharacterState : State
 
     public override void OnUpdate()
     {
+        if (_Owner.IsRunning)
+        {
+            _Owner.StateMachine.SetState(EPlayerState.Running);
+            return;
+        }
+
         if (_Owner.Direction.x == 0 && _Owner.Direction.y == 0)
         {
             _Owner.StateMachine.SetState(EPlayerState.Idle);

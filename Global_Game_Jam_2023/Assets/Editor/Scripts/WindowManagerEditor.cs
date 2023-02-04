@@ -16,7 +16,28 @@ public class WindowManagerEditor : Editor
         {
             Collider2D collider = windowsManager.GetComponent<Collider2D>();
             windowsManager.InsideColliderList = FindObjectsOfType<Collider2D>()
-                .Where(x => collider.bounds.Contains(x.transform.position) && x.GetComponent<Player>() == null && x != collider).ToList();
+                .Where(x => collider.bounds.Contains(x.transform.position)
+                && x.GetComponent<Player>() == null
+                && x != collider
+                && x.GetComponent<StartBar>() == null).ToList();
+            EditorUtility.SetDirty(windowsManager);
+        }
+
+        if(GUILayout.Button("Rendi i collider Figli di questa Window"))
+        {
+
+            foreach (var collider in windowsManager.InsideColliderList)
+            {
+                if(collider.transform.parent != null)
+                {
+                    collider.transform.parent.transform.SetParent(windowsManager.transform);
+                }
+                else
+                {
+                    collider.transform.SetParent(windowsManager.transform);
+                }
+            }
+
             EditorUtility.SetDirty(windowsManager);
         }
     }

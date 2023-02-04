@@ -11,7 +11,7 @@ public class LandedCharacterState : State
     }
     public override void OnEnd()
     {
-
+        _Owner.Landed = false;
     }
 
     public override void OnFixedUpdate()

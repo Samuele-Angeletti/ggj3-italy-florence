@@ -83,12 +83,12 @@ public class GameManager : MonoBehaviour
 
     private void MovementCanceled(InputAction.CallbackContext obj)
     {
-        _player.Move(Vector2.zero);
+        _player.MoveHorizontal(Vector2.zero);
     }
 
     private void MovementPerformed(InputAction.CallbackContext obj)
     {
-        _player.Move(obj.ReadValue<Vector2>());
+        _player.MoveHorizontal(obj.ReadValue<Vector2>());
     }
 
     public void EnablePlayerMovement(bool active)

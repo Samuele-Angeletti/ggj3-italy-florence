@@ -33,11 +33,7 @@ public class Player : MonoBehaviour
     public bool IsJumping;
     public bool IsFalling;
     bool _isGrounded;
-    bool _isWalking;
-    bool _isRunning;
     bool _isDying;
-    bool _isLanding;
-    bool _isIdle;
     float _currentVerticalSpeed;
     float _currentRunSpeed;
     int _passwordCount;
@@ -46,12 +42,11 @@ public class Player : MonoBehaviour
     private Vector3 _firstPosition;
 
     public bool IsRunning => _currentRunSpeed > 0;
-    public bool Landed => _isLanding;
+    public bool Landed;
     public bool Interacting;
     public bool Dying => _isDying;
     public Vector2 Direction => _direction;
     public GenericStateMachine<EPlayerState> StateMachine;
-    string _currentState;
     public int PasswordCount
     {
         get
@@ -93,32 +88,12 @@ public class Player : MonoBehaviour
     private void Update()
     {
         StateMachine.OnUpdate();
-        _currentState = StateMachine.CurrentState.ToString();
-
-        //if(IsJumping)
-        //{
-        //    if(transform.position.y > JumpDestination.y || transform.position.y < LastTransform.y)
-        //    {
-        //        IsJumping = false;
-        //        IsFalling = true;
-        //        GroundCheck();
-        //    }
-        //    LastTransform = transform.position;
-
-        //}
-        //else if(_isFalling)
-        //{
-        //    _direction = new Vector2(_direction.x, -1);
-        //}
 
         if (_rigidbody.velocity.x > 0)
             _spriteRenderer.flipX = false;
         else if (_rigidbody.velocity.x < 0)
             _spriteRenderer.flipX = true;
 
-        //GroundCheck();
-
-        //UpdateAnimator();
     }
 
     public bool GroundCheck()
@@ -135,7 +110,6 @@ public class Player : MonoBehaviour
                 if (IsFalling)
                 {
                     _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
-                    //SwitchAnimation(EPlayerAnimation.Landing);
                 }
 
                 IsFalling = !_isGrounded && !IsJumping;
@@ -174,9 +148,19 @@ public class Player : MonoBehaviour
         _rigidbody.velocity = (movementSpeed + _currentRunSpeed) * Time.fixedDeltaTime * _direction.normalized;
     }
 
-    public void Move(Vector2 newDirection)
+    public void MoveHorizontal(Vector2 newDirection)
     {
         _direction = new Vector2(newDirection.x, _direction.y);
+    }
+    public void MoveVertical(Vector2 newDirection)
+    {
+        _direction = new Vector2(_direction.x, newDirection.y);
+    }
+
+    public void Stop()
+    {
+        _rigidbody.velocity = Vector2.zero;
+        _direction = Vector2.zero;
     }
 
     public void Jump()
@@ -189,6 +173,8 @@ public class Player : MonoBehaviour
         _currentVerticalSpeed = verticalSpeed;
         IsJumping = true;
         JumpDestination = transform.position + Vector3.up * verticalMaxDestination;
+
+        StateMachine.SetState(EPlayerState.Jumping);
     }
 
     public void Run(bool active)
@@ -265,7 +251,6 @@ public class Player : MonoBehaviour
         _isDying = true;
     }
 
-
     public void InteractComplete()
     {
         Interacting = true;
@@ -273,6 +258,6 @@ public class Player : MonoBehaviour
 
     public void LandingComplete()
     {
-        _isLanding = true;
+        Landed = true;
     }
 }

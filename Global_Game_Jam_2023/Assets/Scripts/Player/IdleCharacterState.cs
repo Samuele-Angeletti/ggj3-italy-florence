@@ -27,19 +27,20 @@ public class IdleCharacterState : State
     public override void OnStart()
     {
         _Owner.Animator.SetTrigger("IsIdle");
+        _Owner.Stop();
     }
 
     public override void OnUpdate()
     {
 
-        if (_Owner.IsRunning)
-        {
-            _Owner.StateMachine.SetState(EPlayerState.Running);
-            return;
-        }
-
         if (_Owner.Direction.x > 0 || _Owner.Direction.x < 0)
         {
+            if (_Owner.IsRunning)
+            {
+                _Owner.StateMachine.SetState(EPlayerState.Running);
+                return;
+            }
+
             _Owner.StateMachine.SetState(EPlayerState.Walking);
             return;
         }

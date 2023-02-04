@@ -10,7 +10,7 @@ public class JumpingCharacterState : State
     }
     public override void OnEnd()
     {
-
+        _Owner.IsJumping = false;
     }
 
     public override void OnFixedUpdate()

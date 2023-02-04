@@ -16,6 +16,7 @@ public class FallingCharacterState : State
     }
     public override void OnEnd()
     {
+        _Owner.IsFalling = false;
     }
 
     public override void OnFixedUpdate()
@@ -29,7 +30,7 @@ public class FallingCharacterState : State
     public override void OnStart()
     {
         _Owner.Animator.SetTrigger("IsFalling");
-        _Owner.Move(new Vector2(_Owner.Direction.x, -1));
+        _Owner.MoveVertical(new Vector2(_Owner.Direction.x, -1));
     }
 
     public override void OnUpdate()
