@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     InputSystem _inputSystem;
     [SerializeField] Player _player;
+    List<FolderClickInteractable> _folderClickList;
     private void Awake()
     {
         _inputSystem = new InputSystem();
@@ -54,6 +57,13 @@ public class GameManager : MonoBehaviour
         _inputSystem.Player.SInteract.performed += DownPerformed;
         _inputSystem.Player.DownInteract.performed += DownPerformed;
         
+    }
+
+    private void Start()
+    {
+        _folderClickList = FindObjectsOfType<FolderClickInteractable>().ToList();
+
+        EnablePlayerMouse(false);
     }
 
     private void DownPerformed(InputAction.CallbackContext obj)
@@ -105,6 +115,10 @@ public class GameManager : MonoBehaviour
             _inputSystem.PlayerMouse.Enable();
         else
             _inputSystem.PlayerMouse.Disable();
+
+        Cursor.visible = active;
+
+        _folderClickList.ForEach(x => x.Button.interactable = active);
     }
 
     public void EnablePlayerKeyboard(bool active)
