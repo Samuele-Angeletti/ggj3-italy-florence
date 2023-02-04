@@ -1,6 +1,6 @@
 ﻿using System;
-
-
+using System.Diagnostics;
+using UnityEngine;
 public class LandedCharacterState : State
 {
     private Player _Owner;
@@ -12,6 +12,7 @@ public class LandedCharacterState : State
     public override void OnEnd()
     {
         _Owner.Landed = false;
+        _Owner.MoveVertical(Vector2.zero);
     }
 
     public override void OnFixedUpdate()
@@ -24,7 +25,6 @@ public class LandedCharacterState : State
     public override void OnStart()
     {
         _Owner.Animator.SetTrigger("IsLanding");
-
     }
 
     public override void OnUpdate()

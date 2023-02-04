@@ -30,6 +30,7 @@ public class FallingCharacterState : State
     public override void OnStart()
     {
         _Owner.Animator.SetTrigger("IsFalling");
+        _Owner.Landed = false;
         _Owner.MoveVertical(new Vector2(_Owner.Direction.x, -1));
     }
 

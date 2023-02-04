@@ -23,6 +23,7 @@ public class JumpingCharacterState : State
     public override void OnStart()
     {
         _Owner.Animator.SetTrigger("IsJumping");
+        _Owner.Landed = false;
 
     }
 
