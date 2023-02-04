@@ -14,6 +14,7 @@ public enum EPlayerState
     Landing,
     Running,
     Interacting,
-    Dying
+    Dying,
+    DragAndDrop
 }
 

@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
     {
         _folderClickList = FindObjectsOfType<FolderClickInteractable>().ToList();
 
-        EnablePlayerMouse(false);
+        EnableMouseDragAndDrop(false);
     }
 
     private void DownPerformed(InputAction.CallbackContext obj)
@@ -109,16 +109,22 @@ public class GameManager : MonoBehaviour
             _inputSystem.Player.Disable();
     }
 
-    public void EnablePlayerMouse(bool active)
+    public void EnableMouseDragAndDrop(bool active)
     {
-        if (active)
-            _inputSystem.PlayerMouse.Enable();
-        else
-            _inputSystem.PlayerMouse.Disable();
-
         Cursor.visible = active;
 
         _folderClickList.ForEach(x => x.Button.interactable = active);
+
+        _player.DragAndDropAvailable = true;
+    }
+
+    public void EnableMouseClickOnFolder(bool active)
+    {
+        Cursor.visible = active;
+
+        _folderClickList.ForEach(x => x.Button.interactable = active);
+
+        _player.ClickAvailable = true;
     }
 
     public void EnablePlayerKeyboard(bool active)
@@ -127,6 +133,8 @@ public class GameManager : MonoBehaviour
             _inputSystem.PlayerKeyboard.Enable();
         else
             _inputSystem.PlayerKeyboard.Disable();
+
+        _player.KeyboardTypeAvailable = active;
     }
 
 }

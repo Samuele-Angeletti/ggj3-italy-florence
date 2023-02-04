@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
     public bool Landed;
     public bool Interacting;
     public bool Dying => _isDying;
+    public Rigidbody2D Rigidbody => _rigidbody;
     public Vector2 Direction => _direction;
     public GenericStateMachine<EPlayerState> StateMachine;
     public int PasswordCount
@@ -69,6 +70,10 @@ public class Player : MonoBehaviour
             _passwordCount = value;
         }
     }
+
+    public bool DragAndDropAvailable;
+    public bool ClickAvailable;
+    public bool KeyboardTypeAvailable;
 
     private void Awake()
     {
@@ -87,6 +92,7 @@ public class Player : MonoBehaviour
         StateMachine.RegisterState(EPlayerState.Interacting, new InteractingCharacterState(this));
         StateMachine.RegisterState(EPlayerState.Landing, new LandedCharacterState(this));
         StateMachine.RegisterState(EPlayerState.Dying, new DyingPlayerState(this));
+        StateMachine.RegisterState(EPlayerState.DragAndDrop, new DragAndDropPlayerState(this));
 
         StateMachine.SetState(EPlayerState.Idle);
     }
@@ -306,5 +312,16 @@ public class Player : MonoBehaviour
 
 
         audioSource.Play();
+    }
+
+    public void Drag()
+    {
+        if(DragAndDropAvailable)
+            StateMachine.SetState(EPlayerState.DragAndDrop);
+    }
+
+    public void Drop()
+    {
+        StateMachine.SetState(EPlayerState.Falling);
     }
 }
