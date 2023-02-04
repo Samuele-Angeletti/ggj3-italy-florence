@@ -14,7 +14,8 @@ public class FolderPasswordInteractable : Interactable
     {
         if (player.PasswordCount > 0 || !islocked)
         {
-            player.PasswordCount--;
+            if(islocked)
+                player.PasswordCount--;
             islocked = false;
             spriteRenderer.sprite = normalFolder;
             player.Dematerialize(windowDestination.CheckPoint);
