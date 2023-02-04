@@ -214,7 +214,6 @@ public class Player : MonoBehaviour
         if (!_isGrounded || Interacting) return;
 
         StateMachine.SetState(EPlayerState.Interacting);
-        Interacting = true;
 
     }
 
