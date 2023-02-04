@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     InputSystem _inputSystem;
     [SerializeField] Player _player;
+    public Player Player => _player;
     List<FolderClickInteractable> _folderClickList;
     private void Awake()
     {
@@ -56,14 +57,19 @@ public class GameManager : MonoBehaviour
 
         _inputSystem.Player.SInteract.performed += DownPerformed;
         _inputSystem.Player.DownInteract.performed += DownPerformed;
-        
+
+        _folderClickList = FindObjectsOfType<FolderClickInteractable>().ToList();
     }
 
     private void Start()
     {
-        _folderClickList = FindObjectsOfType<FolderClickInteractable>().ToList();
+        StartGame();
+    }
 
+    public void StartGame()
+    {
         EnableMouseDragAndDrop(false);
+
     }
 
     private void DownPerformed(InputAction.CallbackContext obj)
@@ -113,7 +119,23 @@ public class GameManager : MonoBehaviour
     {
         Cursor.visible = active;
 
-        _folderClickList.ForEach(x => x.Button.interactable = active);
+        if(active)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        if(_folderClickList != null)
+        foreach (var x in _folderClickList)
+        {
+            if(x != null && x.Button != null)
+            {
+                x.Button.interactable = active;
+            }
+        }
 
         _player.DragAndDropAvailable = true;
     }
@@ -122,7 +144,23 @@ public class GameManager : MonoBehaviour
     {
         Cursor.visible = active;
 
-        _folderClickList.ForEach(x => x.Button.interactable = active);
+        if (active)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        if(_folderClickList != null)
+        foreach (var x in _folderClickList)
+        {
+            if (x != null && x.Button != null)
+            {
+                x.Button.interactable = active;
+            }
+        }
 
         _player.ClickAvailable = true;
     }
