@@ -3167,7 +3167,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1618592979}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270752214}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf4e773058f14014d83c5573cc6398a8, type: 3}
@@ -5632,11 +5632,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 3662480139582372495, guid: 799fa0659d6bf8d438d248bb39ddc015,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 799fa0659d6bf8d438d248bb39ddc015, type: 3}
 --- !u!61 &1053247386 stripped
@@ -6448,41 +6443,6 @@ BoxCollider2D:
     type: 3}
   m_PrefabInstance: {fileID: 1998970982}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1270752214 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4368369396638782952, guid: d099acb78fb539146bd8ffbf95e78c7d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1618592979}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1270752217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270752214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1001 &1287075952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8562,11 +8522,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4368369396638782932, guid: d099acb78fb539146bd8ffbf95e78c7d,
-        type: 3}
-      propertyPath: movementSpeed
-      value: 250
-      objectReference: {fileID: 0}
     - target: {fileID: 4368369396638782933, guid: d099acb78fb539146bd8ffbf95e78c7d,
         type: 3}
       propertyPath: m_RootOrder
@@ -8626,11 +8581,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4368369396638782952, guid: d099acb78fb539146bd8ffbf95e78c7d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d099acb78fb539146bd8ffbf95e78c7d, type: 3}
@@ -10975,6 +10925,7 @@ MonoBehaviour:
   DragAndDropAvailable: 0
   ClickAvailable: 0
   KeyboardTypeAvailable: 0
+  AlphabetManager: {fileID: 0}
   InsideColliderList:
   - {fileID: 1123328157}
   - {fileID: 572659410}

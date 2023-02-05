@@ -25,6 +25,7 @@ public class PowerUpInteractable : Interactable
         Player = player;
         Invoke(nameof(DelayMethod), 0.1f);
 
+        GameManager.Instance.PlayPickableTaken();
     }
 
     public void DelayMethod()

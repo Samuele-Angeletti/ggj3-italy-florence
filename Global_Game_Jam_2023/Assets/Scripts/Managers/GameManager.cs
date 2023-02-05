@@ -42,10 +42,28 @@ public class GameManager : MonoBehaviour
     public AudioSource AudioSourceGlobal;
 
     public AudioClip ProtectedFolder;
+    public AudioClip PickableTaken;
+    public AudioClip MouseClick;
+    public List<AudioClip> KeyboardSounds;
 
     public void PlayPotectedFolder()
     {
         AudioSourceGlobal.clip = ProtectedFolder;
+        AudioSourceGlobal.Play();
+    }
+    public void PlayPickableTaken()
+    {
+        AudioSourceGlobal.clip = PickableTaken;
+        AudioSourceGlobal.Play();
+    }
+    public void PlayMouseClick()
+    {
+        AudioSourceGlobal.clip = MouseClick;
+        AudioSourceGlobal.Play();
+    }
+    public void PlayRandomKeyboard()
+    {
+        AudioSourceGlobal.clip = KeyboardSounds[UnityEngine.Random.Range(0, KeyboardSounds.Count)];
         AudioSourceGlobal.Play();
     }
 
@@ -73,6 +91,7 @@ public class GameManager : MonoBehaviour
 
         _folderClickList = FindObjectsOfType<FolderClickInteractable>().ToList();
 
+        _inputSystem.PlayerMouse.LeftMouse.performed += LeftMouse_performed;
 
         _inputSystem.PlayerKeyboard.Enable();
         _inputSystem.PlayerKeyboard.A.performed += A_performed;
@@ -104,6 +123,11 @@ public class GameManager : MonoBehaviour
         _inputSystem.PlayerKeyboard.Backspace.performed += Backspace_performed; ;
 
         EnablePlayerKeyboard(false);
+    }
+
+    private void LeftMouse_performed(InputAction.CallbackContext obj)
+    {
+        PlayMouseClick();
     }
 
     private void Backspace_performed(InputAction.CallbackContext obj)
@@ -296,10 +320,12 @@ public class GameManager : MonoBehaviour
         if (active)
         {
             Cursor.lockState = CursorLockMode.None;
+            _inputSystem.PlayerMouse.Enable();
         }
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
+            _inputSystem.PlayerMouse.Disable();
         }
 
         if(_folderClickList != null)
@@ -311,7 +337,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        _player.ClickAvailable = true;
+
+        _player.ClickAvailable = active;
     }
 
     public void EnablePlayerKeyboard(bool active, AlphabetManager alphabetManager = null)

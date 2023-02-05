@@ -11,6 +11,8 @@ public class PasswordInteractable : Interactable
         player.PasswordCount++;
         Player = player;
         Invoke(nameof(DelayMethod), 0.1f);
+
+        GameManager.Instance.PlayPickableTaken();
     }
 
     public void DelayMethod()

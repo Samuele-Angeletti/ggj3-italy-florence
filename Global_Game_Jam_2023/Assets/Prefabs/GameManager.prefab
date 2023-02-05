@@ -50,6 +50,13 @@ MonoBehaviour:
   _alphabetManager: {fileID: 0}
   AudioSourceGlobal: {fileID: 3640984928733947834}
   ProtectedFolder: {fileID: 8300000, guid: c691c12e0f901dd449c67a9f0791a4f9, type: 3}
+  PickableTaken: {fileID: 8300000, guid: af85d8571102af94e99a0750516f7946, type: 3}
+  MouseClick: {fileID: 8300000, guid: 08786bb2f9608cd43b8f822d3e7117e5, type: 3}
+  KeyboardSounds:
+  - {fileID: 8300000, guid: c3dead0c3a7c7ea4eb593acef6b10d62, type: 3}
+  - {fileID: 8300000, guid: f8435ef92c6606f42802564936309185, type: 3}
+  - {fileID: 8300000, guid: 99c86c8c883c5c142a8fe71f876ae7d6, type: 3}
+  - {fileID: 8300000, guid: 42bff6ce29ce787458bd06a29e82f2eb, type: 3}
 --- !u!222 &3662480139582372490
 CanvasRenderer:
   m_ObjectHideFlags: 0
