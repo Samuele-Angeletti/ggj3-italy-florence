@@ -133,111 +133,138 @@ public class GameManager : MonoBehaviour
     private void Backspace_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.Backspace();
+        PlayRandomKeyboard();
     }
 
     private void A_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("A");
+        PlayRandomKeyboard();
     }
     private void B_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("B");
+        PlayRandomKeyboard();
     }
     private void C_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("C");
+        PlayRandomKeyboard();
     }
     private void D_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("D");
+        PlayRandomKeyboard();
     }
     private void E_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("E");
+        PlayRandomKeyboard();
     }
     private void F_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("F");
+        PlayRandomKeyboard();
     }
     private void G_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("G");
+        PlayRandomKeyboard();
     }
     private void H_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("H");
+        PlayRandomKeyboard();
     }
     private void I_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("I");
+        PlayRandomKeyboard();
     }
     private void J_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("J");
+        PlayRandomKeyboard();
     }
     private void K_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("K");
+        PlayRandomKeyboard();
     }
     private void L_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("L");
+        PlayRandomKeyboard();
     }
     private void M_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("M");
+        PlayRandomKeyboard();
     }
     private void N_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("N");
+        PlayRandomKeyboard();
     }
     private void O_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("O");
+        PlayRandomKeyboard();
     }
     private void P_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("P");
+        PlayRandomKeyboard();
     }
     private void Q_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("Q");
+        PlayRandomKeyboard();
     }
     private void R_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("R");
+        PlayRandomKeyboard();
     }
     private void S_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("S");
+        PlayRandomKeyboard();
     }
     private void T_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("T");
+        PlayRandomKeyboard();
     }
     private void U_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("U");
+        PlayRandomKeyboard();
     }
     private void V_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("V");
+        PlayRandomKeyboard();
     }
     private void W_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("W");
+        PlayRandomKeyboard();
     }
     private void X_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("X");
+        PlayRandomKeyboard();
     }
     private void Y_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("Y");
+        PlayRandomKeyboard();
     }
     private void Z_performed(InputAction.CallbackContext obj)
     {
         _alphabetManager.SpawnLetter("Z");
+        PlayRandomKeyboard();
     }
 
     public void StartGame()

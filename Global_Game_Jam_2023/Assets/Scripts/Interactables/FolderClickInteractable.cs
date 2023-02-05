@@ -10,19 +10,8 @@ public class FolderClickInteractable : MonoBehaviour
 
     public Button Button;
 
-    //TextMeshProUGUI textMeshProUGUI;
-    //[HideInInspector] public string FolderName;
-
-    //private void Start()
-    //{
-    //    textMeshProUGUI = gameObject.SearchComponent<TextMeshProUGUI>();
-    //    if(textMeshProUGUI != null)
-    //        FolderName = textMeshProUGUI.text;
-    //}
-
     public void Interact()
     {
-        //UIManager.Instance.AddText(FolderName);
         windowPlatform.gameObject.SetActive(true);
     }
 }
