@@ -58,7 +58,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: -1975075845
+  m_SortingLayerID: 1049737679
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &8440800695201234429
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2dc653fb9b943e440ac70a20b8874235, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad5e840af538158499842474ba8ffe28, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -587,9 +587,9 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.523989, g: 0.5660378, b: 0.1463154, a: 1}
-    m_HighlightedColor: {r: 0.9056604, g: 0.88252044, b: 0.03759341, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_NormalColor: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
+    m_HighlightedColor: {r: 0.64487433, g: 1, b: 0.32452828, a: 1}
+    m_PressedColor: {r: 0.3180196, g: 0.6037736, b: 0.20163757, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
