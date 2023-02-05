@@ -12,11 +12,11 @@ public class FolderPasswordInteractable : Interactable
 
     public override void Interact(Player player)
     {
-        base.Interact(player);
         if (player.PasswordCount > 0 || !islocked)
         {
             if(islocked)
                 player.PasswordCount--;
+            base.Interact(player);
             islocked = false;
             spriteRenderer.sprite = normalFolder;
             player.Dematerialize(windowDestination.CheckPoint);

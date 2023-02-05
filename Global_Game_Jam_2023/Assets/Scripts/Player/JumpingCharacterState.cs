@@ -24,6 +24,8 @@ public class JumpingCharacterState : State
     {
         _Owner.Animator.SetTrigger("IsJumping");
         _Owner.Landed = false;
+        _Owner.AudioSource.clip = _Owner.jumpFinal;
+        _Owner.AudioSource.Play();
 
     }
 
