@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,7 +35,11 @@ public class WindowsManager : MonoBehaviour
     private void OnEnable()
     {
         EnableColliders(true);
+        TryAbilities();
+    }
 
+    internal void TryAbilities()
+    {
         GameManager.Instance.EnableMouseDragAndDrop(GameManager.Instance.Player.DragAndDropAvailable && DragAndDropAvailable);
         GameManager.Instance.EnableMouseClickOnFolder(GameManager.Instance.Player.ClickAvailable && ClickAvailable);
         GameManager.Instance.EnablePlayerKeyboard(GameManager.Instance.Player.KeyboardTypeAvailable && KeyboardTypeAvailable, AlphabetManager);
