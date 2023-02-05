@@ -10,7 +10,7 @@ public class WindowsManager : MonoBehaviour
     public bool DragAndDropAvailable;
     public bool ClickAvailable;
     public bool KeyboardTypeAvailable;
-
+    public AlphabetManager AlphabetManager;
     public List<Collider2D> InsideColliderList;
     public List<Collider2D> Walls;
     private void Start()
@@ -36,7 +36,7 @@ public class WindowsManager : MonoBehaviour
         EnableColliders(true);
 
         GameManager.Instance.EnableMouseDragAndDrop(GameManager.Instance.Player.DragAndDropAvailable && DragAndDropAvailable);
-        GameManager.Instance.EnableMouseDragAndDrop(GameManager.Instance.Player.ClickAvailable && ClickAvailable);
-        GameManager.Instance.EnableMouseDragAndDrop(GameManager.Instance.Player.KeyboardTypeAvailable && KeyboardTypeAvailable);
+        GameManager.Instance.EnableMouseClickOnFolder(GameManager.Instance.Player.ClickAvailable && ClickAvailable);
+        GameManager.Instance.EnablePlayerKeyboard(GameManager.Instance.Player.KeyboardTypeAvailable && KeyboardTypeAvailable, AlphabetManager);
     }
 }

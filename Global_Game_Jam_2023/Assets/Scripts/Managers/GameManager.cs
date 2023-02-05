@@ -302,7 +302,7 @@ public class GameManager : MonoBehaviour
         _player.ClickAvailable = true;
     }
 
-    public void EnablePlayerKeyboard(bool active)
+    public void EnablePlayerKeyboard(bool active, AlphabetManager alphabetManager = null)
     {
         if (active)
             _inputSystem.PlayerKeyboard.Enable();
@@ -310,6 +310,9 @@ public class GameManager : MonoBehaviour
             _inputSystem.PlayerKeyboard.Disable();
 
         _player.KeyboardTypeAvailable = active;
+
+        if (alphabetManager != null)
+            _alphabetManager = alphabetManager;
     }
 
 
