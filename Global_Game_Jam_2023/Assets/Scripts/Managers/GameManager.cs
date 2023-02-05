@@ -37,6 +37,11 @@ public class GameManager : MonoBehaviour
     public Player Player => _player;
     List<FolderClickInteractable> _folderClickList;
     [SerializeField] AlphabetManager _alphabetManager;
+
+    public AudioSource AudioSourceGlobal;
+
+    public AudioClip ProtectedFolder;
+
     private void Awake()
     {
         _inputSystem = new InputSystem();

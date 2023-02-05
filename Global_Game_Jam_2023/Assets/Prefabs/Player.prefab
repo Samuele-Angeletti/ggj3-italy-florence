@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4368369396638782933
 Transform:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphics: {fileID: 4368369395763470385}
-  movementSpeed: 300
+  movementSpeed: 250
   runSpeed: 350
   verticalSpeed: 850
   verticalMaxDestination: 8
@@ -209,6 +209,10 @@ MonoBehaviour:
     type: 3}
   timeBetweenRespawn: 1
   audioSource: {fileID: 783333676}
+  codinaCavallo: {fileID: 8300000, guid: 419d4e17a239bb74d8bcd90dc523ae45, type: 3}
+  playerDeath: {fileID: 8300000, guid: bcc8b691c00dc47448a8b8497ebfdf72, type: 3}
+  pixelExplosion: {fileID: 8300000, guid: 90467f377a8bcf74087861d7c55c3e47, type: 3}
+  jumpFinal: {fileID: 8300000, guid: 77e4b66130570f04694851401c5e8694, type: 3}
   JumpDestination: {x: 0, y: 0}
   LastTransform: {x: 0, y: 0}
   IsJumping: 0
