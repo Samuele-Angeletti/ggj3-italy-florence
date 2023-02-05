@@ -5,6 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
+using System.Collections;
+using BehaviorDesigner.Runtime.Tasks;
 
 public class GameManager : MonoBehaviour
 {
@@ -122,7 +125,26 @@ public class GameManager : MonoBehaviour
         _inputSystem.PlayerKeyboard.Z.performed += Z_performed;
         _inputSystem.PlayerKeyboard.Backspace.performed += Backspace_performed; ;
 
+        _inputSystem.PlayerEndMap1.Enter.performed += Enter_performed;
+        _inputSystem.PlayerEndMap1.Escer.performed += Escer_performed;
+        _inputSystem.PlayerEndMap1.Spenter.performed += Spenter_performed;
+
         EnablePlayerKeyboard(false);
+    }
+
+    private void Spenter_performed(InputAction.CallbackContext obj)
+    {
+
+    }
+
+    private void Escer_performed(InputAction.CallbackContext obj)
+    {
+        Exit();
+    }
+
+    private void Enter_performed(InputAction.CallbackContext obj)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void LeftMouse_performed(InputAction.CallbackContext obj)
@@ -353,15 +375,26 @@ public class GameManager : MonoBehaviour
             _inputSystem.PlayerMouse.Disable();
         }
 
-        if(_folderClickList != null)
-        foreach (var x in _folderClickList)
-        {
-            if (x != null && x.Button != null)
-            {
-                x.Button.interactable = active;
-            }
-        }
+        StartCoroutine(SearchClickButtonCoroutine(active));
+    }
 
+    private IEnumerator SearchClickButtonCoroutine(bool active)
+    {
+        yield return new WaitForSeconds(0.1f);
+        SearchClickButton(active);
+    }
+
+    private void SearchClickButton(bool active)
+    {
+        _folderClickList = FindObjectsOfType<FolderClickInteractable>().ToList();
+        if (_folderClickList != null)
+            foreach (var x in _folderClickList)
+            {
+                if (x != null && x.Button != null)
+                {
+                    x.Button.interactable = active;
+                }
+            }
     }
 
     public void EnablePlayerKeyboard(bool active, AlphabetManager alphabetManager = null)
@@ -376,6 +409,7 @@ public class GameManager : MonoBehaviour
         if (alphabetManager != null)
             _alphabetManager = alphabetManager;
     }
+
 
 
     public void Exit()
