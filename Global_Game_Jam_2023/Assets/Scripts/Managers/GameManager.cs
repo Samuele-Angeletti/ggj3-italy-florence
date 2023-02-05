@@ -419,8 +419,6 @@ public class GameManager : MonoBehaviour
         else
             _inputSystem.PlayerKeyboard.Disable();
 
-        _player.KeyboardTypeAvailable = active;
-
         if (alphabetManager != null)
             _alphabetManager = alphabetManager;
     }
