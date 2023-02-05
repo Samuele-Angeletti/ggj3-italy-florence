@@ -30,6 +30,11 @@ public class Player : MonoBehaviour
     [SerializeField] float timeBetweenRespawn;
     [Header("SFX")]
     [SerializeField] AudioSource audioSource;
+    public AudioClip codinaCavallo;
+    public AudioClip playerDeath;
+    public AudioClip pixelExplosion;
+    public AudioClip jumpFinal;
+
     Checkpoint currentCheckpoint;
     Animator _animator;
     Rigidbody2D _rigidbody;
@@ -48,7 +53,7 @@ public class Player : MonoBehaviour
     public Animator Animator => _animator;
     public Checkpoint Checkpoint => currentCheckpoint;
     private Vector3 _firstPosition;
-
+    public AudioSource AudioSource => audioSource;
     bool _wasDematerialize;
     public bool IsRunning => _currentRunSpeed > 0;
     public bool Landed;
@@ -247,6 +252,7 @@ public class Player : MonoBehaviour
 
         _wasDematerialize = true;
 
+        audioSource.clip = pixelExplosion;
         audioSource.Play();
 
         graphics.SetActive(false);
@@ -290,6 +296,9 @@ public class Player : MonoBehaviour
         StateMachine.SetState(EPlayerState.Dying);
 
         _isDying = true;
+
+        audioSource.clip = playerDeath;
+        audioSource.Play();
     }
 
     public void InteractComplete()
@@ -323,5 +332,11 @@ public class Player : MonoBehaviour
     public void Drop()
     {
         StateMachine.SetState(EPlayerState.Falling);
+    }
+
+    public void AngrySound()
+    {
+        audioSource.clip = codinaCavallo;
+        audioSource.Play();
     }
 }
