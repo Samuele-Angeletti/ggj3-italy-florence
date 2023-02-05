@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5603050954902268365}
   - component: {fileID: 5603050954902268354}
   m_Layer: 0
-  m_Name: 6 TriggerAreaPowerUpUse
+  m_Name: 9 TriggerAreaPowerUpUse 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,8 +347,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Well, those weren't only Legends i suppose... The "mouse" is available
-    in this "Folder" and in some other. Click on that "Folder" for a new experience
+  m_text: "Finally there is a pdf that helps people write properly. I hope that this
+    file can cure the stupidity of humans, but maybe they will only \u201CJump\u201D
+    on the \u201CKeyboard\u201D to write nonsense."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
