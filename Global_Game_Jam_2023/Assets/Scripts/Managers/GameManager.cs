@@ -134,7 +134,8 @@ public class GameManager : MonoBehaviour
 
     private void Spenter_performed(InputAction.CallbackContext obj)
     {
-
+        UIManager.Instance.ShowCredits();
+        _inputSystem.PlayerEndMap1.Disable();
     }
 
     private void Escer_performed(InputAction.CallbackContext obj)
@@ -145,6 +146,7 @@ public class GameManager : MonoBehaviour
     private void Enter_performed(InputAction.CallbackContext obj)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        _inputSystem.PlayerEndMap1.Disable();
     }
 
     private void LeftMouse_performed(InputAction.CallbackContext obj)
@@ -410,7 +412,16 @@ public class GameManager : MonoBehaviour
             _alphabetManager = alphabetManager;
     }
 
-
+    public void GameOver()
+    {
+        UIManager.Instance.ShowGameOver();
+        EnableMouseClickOnFolder(false);
+        EnableMouseDragAndDrop(false);
+        EnablePlayerKeyboard(false);
+        EnablePlayerMovement(false);
+        _inputSystem.PlayerEndMap1.Enable();
+        _player.gameObject.SetActive(false);
+    }
 
     public void Exit()
     {
