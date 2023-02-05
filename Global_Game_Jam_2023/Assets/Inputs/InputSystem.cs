@@ -832,6 +832,74 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerEndMap1"",
+            ""id"": ""c202a6dc-b44b-4c22-8ce2-9e60fb59a1e3"",
+            ""actions"": [
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""978ba7b4-d062-482d-86e3-ac32db3e5f8f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Escer"",
+                    ""type"": ""Button"",
+                    ""id"": ""2096bd03-0574-4506-802d-1d2cc1483dca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spenter"",
+                    ""type"": ""Button"",
+                    ""id"": ""bda5b0c4-de43-4422-a248-cdfd22a99f19"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""92a62441-aa82-4824-924e-6e3f3dad2d8f"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7a85aac1-814c-4058-ae86-00b8b9527844"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fc9f2e2d-fe8a-44bc-844d-7c42f0b85952"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spenter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -878,6 +946,11 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         m_PlayerKeyboard_Y = m_PlayerKeyboard.FindAction("Y", throwIfNotFound: true);
         m_PlayerKeyboard_Z = m_PlayerKeyboard.FindAction("Z", throwIfNotFound: true);
         m_PlayerKeyboard_Backspace = m_PlayerKeyboard.FindAction("Backspace", throwIfNotFound: true);
+        // PlayerEndMap1
+        m_PlayerEndMap1 = asset.FindActionMap("PlayerEndMap1", throwIfNotFound: true);
+        m_PlayerEndMap1_Enter = m_PlayerEndMap1.FindAction("Enter", throwIfNotFound: true);
+        m_PlayerEndMap1_Escer = m_PlayerEndMap1.FindAction("Escer", throwIfNotFound: true);
+        m_PlayerEndMap1_Spenter = m_PlayerEndMap1.FindAction("Spenter", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1296,6 +1369,55 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         }
     }
     public PlayerKeyboardActions @PlayerKeyboard => new PlayerKeyboardActions(this);
+
+    // PlayerEndMap1
+    private readonly InputActionMap m_PlayerEndMap1;
+    private IPlayerEndMap1Actions m_PlayerEndMap1ActionsCallbackInterface;
+    private readonly InputAction m_PlayerEndMap1_Enter;
+    private readonly InputAction m_PlayerEndMap1_Escer;
+    private readonly InputAction m_PlayerEndMap1_Spenter;
+    public struct PlayerEndMap1Actions
+    {
+        private @InputSystem m_Wrapper;
+        public PlayerEndMap1Actions(@InputSystem wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Enter => m_Wrapper.m_PlayerEndMap1_Enter;
+        public InputAction @Escer => m_Wrapper.m_PlayerEndMap1_Escer;
+        public InputAction @Spenter => m_Wrapper.m_PlayerEndMap1_Spenter;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerEndMap1; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerEndMap1Actions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerEndMap1Actions instance)
+        {
+            if (m_Wrapper.m_PlayerEndMap1ActionsCallbackInterface != null)
+            {
+                @Enter.started -= m_Wrapper.m_PlayerEndMap1ActionsCallbackInterface.OnEnter;
+                @Enter.performed -= m_Wrapper.m_PlayerEndMap1ActionsCallbackInterface.OnEnter;
+                @Enter.canceled -= m_Wrapper.m_PlayerEndMap1ActionsCallbackInterface.OnEnter;
+                @Escer.started -= m_Wrapper.m_PlayerEndMap1ActionsCallbackInterface.OnEscer;
+                @Escer.performed -= m_Wrapper.m_PlayerEndMap1ActionsCallbackInterface.OnEscer;
+                @Escer.canceled -= m_Wrapper.m_PlayerEndMap1ActionsCallbackInterface.OnEscer;
+                @Spenter.started -= m_Wrapper.m_PlayerEndMap1ActionsCallbackInterface.OnSpenter;
+                @Spenter.performed -= m_Wrapper.m_PlayerEndMap1ActionsCallbackInterface.OnSpenter;
+                @Spenter.canceled -= m_Wrapper.m_PlayerEndMap1ActionsCallbackInterface.OnSpenter;
+            }
+            m_Wrapper.m_PlayerEndMap1ActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Enter.started += instance.OnEnter;
+                @Enter.performed += instance.OnEnter;
+                @Enter.canceled += instance.OnEnter;
+                @Escer.started += instance.OnEscer;
+                @Escer.performed += instance.OnEscer;
+                @Escer.canceled += instance.OnEscer;
+                @Spenter.started += instance.OnSpenter;
+                @Spenter.performed += instance.OnSpenter;
+                @Spenter.canceled += instance.OnSpenter;
+            }
+        }
+    }
+    public PlayerEndMap1Actions @PlayerEndMap1 => new PlayerEndMap1Actions(this);
     public interface IPlayerActions
     {
         void OnWASDMovement(InputAction.CallbackContext context);
@@ -1340,5 +1462,11 @@ public partial class @InputSystem : IInputActionCollection2, IDisposable
         void OnY(InputAction.CallbackContext context);
         void OnZ(InputAction.CallbackContext context);
         void OnBackspace(InputAction.CallbackContext context);
+    }
+    public interface IPlayerEndMap1Actions
+    {
+        void OnEnter(InputAction.CallbackContext context);
+        void OnEscer(InputAction.CallbackContext context);
+        void OnSpenter(InputAction.CallbackContext context);
     }
 }
