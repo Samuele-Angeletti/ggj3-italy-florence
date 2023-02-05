@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
     public AudioClip MouseClick;
     public List<AudioClip> KeyboardSounds;
 
+    public GameObject levelSound;
+    public GameObject endSound;
+
     public void PlayPotectedFolder()
     {
         AudioSourceGlobal.clip = ProtectedFolder;
@@ -302,7 +305,17 @@ public class GameManager : MonoBehaviour
     {
 
         _player.gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        Invoke(nameof(StartMusic), 1f);
     }
+
+    public void StartMusic()
+    {
+        levelSound.SetActive(true);
+    }
+
 
     private void DownPerformed(InputAction.CallbackContext obj)
     {
@@ -415,6 +428,10 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         UIManager.Instance.ShowGameOver();
+
+        levelSound.SetActive(false);
+        endSound.SetActive(true);
+
         EnableMouseClickOnFolder(false);
         EnableMouseDragAndDrop(false);
         EnablePlayerKeyboard(false);

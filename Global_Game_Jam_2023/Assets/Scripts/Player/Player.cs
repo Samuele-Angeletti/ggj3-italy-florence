@@ -33,8 +33,7 @@ public class Player : MonoBehaviour
     public AudioClip codinaCavallo;
     public AudioClip playerDeath;
     public AudioClip pixelExplosion;
-    public AudioClip jumpFinal;
-
+    public List<AudioClip> jumpSounds;
     Checkpoint currentCheckpoint;
     Animator _animator;
     Rigidbody2D _rigidbody;

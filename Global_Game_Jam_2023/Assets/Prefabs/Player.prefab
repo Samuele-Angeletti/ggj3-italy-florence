@@ -212,7 +212,10 @@ MonoBehaviour:
   codinaCavallo: {fileID: 8300000, guid: 419d4e17a239bb74d8bcd90dc523ae45, type: 3}
   playerDeath: {fileID: 8300000, guid: bcc8b691c00dc47448a8b8497ebfdf72, type: 3}
   pixelExplosion: {fileID: 8300000, guid: 90467f377a8bcf74087861d7c55c3e47, type: 3}
-  jumpFinal: {fileID: 8300000, guid: 77e4b66130570f04694851401c5e8694, type: 3}
+  jumpSounds:
+  - {fileID: 8300000, guid: 4041720f15f773f498695a86dca19e33, type: 3}
+  - {fileID: 8300000, guid: 6a4bf8eff94fbe543bf1dea9d727256d, type: 3}
+  - {fileID: 8300000, guid: d9b44a9e1eb4cca4289018f859ad17a4, type: 3}
   JumpDestination: {x: 0, y: 0}
   LastTransform: {x: 0, y: 0}
   IsJumping: 0
