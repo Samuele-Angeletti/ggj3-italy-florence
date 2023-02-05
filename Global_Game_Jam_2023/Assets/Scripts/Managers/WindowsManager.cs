@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,8 +28,8 @@ public class WindowsManager : MonoBehaviour
 
     public void EnableColliders(bool enabled)
     {
-        Walls.ForEach(x => x.enabled = enabled);
-        InsideColliderList.ForEach(x => x.enabled = enabled);
+        Walls.Where(x => x != null).ToList().ForEach(x => x.enabled = enabled);
+        InsideColliderList.Where(x => x != null).ToList().ForEach(x => x.enabled = enabled);
     }
 
     private void OnEnable()
