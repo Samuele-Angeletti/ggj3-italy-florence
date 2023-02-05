@@ -7,7 +7,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] Projectile projectilePrefab;
     [SerializeField] float timeCoolDown;
     [SerializeField] Transform shootPivot;
-
+    [SerializeField] AudioSource shootSound;
     Animator animator;
 
     float timePassed;
@@ -30,7 +30,7 @@ public class Cannon : MonoBehaviour
     public void Shoot()
     {
         var projectile = Instantiate(projectilePrefab, shootPivot.position, transform.rotation);
-
+        shootSound.Play();
     }
 
 }

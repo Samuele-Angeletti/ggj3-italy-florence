@@ -30,6 +30,11 @@ public class WindowsManager : MonoBehaviour
     {
         Walls.Where(x => x != null).ToList().ForEach(x => x.enabled = enabled);
         InsideColliderList.Where(x => x != null).ToList().ForEach(x => x.enabled = enabled);
+        var cannonList = InsideColliderList.Where(x => x.gameObject.SearchComponent<Cannon>() != null).ToList();
+        if(cannonList.Count > 0)
+        {
+            cannonList.ForEach(x => x.gameObject.SetActive(enabled));
+        }
     }
 
     private void OnEnable()
