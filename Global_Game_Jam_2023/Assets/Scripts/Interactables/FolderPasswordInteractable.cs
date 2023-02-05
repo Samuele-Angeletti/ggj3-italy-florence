@@ -10,8 +10,11 @@ public class FolderPasswordInteractable : Interactable
 
     bool islocked = true;
 
+    Player Player;
     public override void Interact(Player player)
     {
+        Player = player;
+
         if (player.PasswordCount > 0 || !islocked)
         {
             if(islocked)
@@ -22,7 +25,17 @@ public class FolderPasswordInteractable : Interactable
             player.Dematerialize(windowDestination.CheckPoint);
         }
         else
-            Debug.Log("Non hai una password!");
+        {
+            Invoke(nameof(DelayMethod), 0.1f);
+
+            GameManager.Instance.PlayPotectedFolder();
+        }
+    }
+
+
+    public void DelayMethod()
+    {
+        Player.Interacting = false;
     }
 
 

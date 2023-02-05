@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -41,6 +42,12 @@ public class GameManager : MonoBehaviour
     public AudioSource AudioSourceGlobal;
 
     public AudioClip ProtectedFolder;
+
+    public void PlayPotectedFolder()
+    {
+        AudioSourceGlobal.clip = ProtectedFolder;
+        AudioSourceGlobal.Play();
+    }
 
     private void Awake()
     {
