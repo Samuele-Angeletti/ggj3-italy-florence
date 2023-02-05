@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] Path path;
+    [SerializeField] SpriteRenderer spriteRenderer;
     NavMeshAgent _agent;
     BehaviorTree _behaviorTree;
     private void Start()
@@ -20,8 +21,21 @@ public class EnemyController : MonoBehaviour
         _behaviorTree.SetVariableValue("Acceleration", _agent.acceleration);
         _behaviorTree.SetVariableValue("StoppingDistance", _agent.stoppingDistance);
 
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
     }
 
+    private void Update()
+    {
+        if(_agent.velocity.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if(_agent.velocity.x < 0)
+        {
+            spriteRenderer.flipX = true;
+
+        }
+    }
 
 }
