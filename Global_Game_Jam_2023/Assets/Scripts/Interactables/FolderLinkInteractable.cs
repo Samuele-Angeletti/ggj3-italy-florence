@@ -6,11 +6,23 @@ public class FolderLinkInteractable : Interactable
 {
     [SerializeField] FolderLinkInteractable link;
 
+    Player Player;
     public override void Interact(Player player)
     {
-        base.Interact(player);
-        if(link != null)
+        Player = player;
+        if (link != null)
+        {
+            base.Interact(player);
+
             player.transform.position = link.transform.position;
+        }
+        Invoke(nameof(DelayMethod), 0.1f);
+    }
+
+
+    public void DelayMethod()
+    {
+        Player.Interacting = false;
     }
 
 #if UNITY_EDITOR
