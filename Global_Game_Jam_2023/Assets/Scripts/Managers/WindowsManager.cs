@@ -14,6 +14,7 @@ public class WindowsManager : MonoBehaviour
     public AlphabetManager AlphabetManager;
     public List<Collider2D> InsideColliderList;
     public List<Collider2D> Walls;
+    public bool IsDesktop;
     private void Start()
     {
         foreach (var collider in InsideColliderList)
@@ -45,8 +46,17 @@ public class WindowsManager : MonoBehaviour
 
     internal void TryAbilities()
     {
-        GameManager.Instance.EnableMouseDragAndDrop(GameManager.Instance.Player.DragAndDropAvailable && DragAndDropAvailable);
-        GameManager.Instance.EnableMouseClickOnFolder(GameManager.Instance.Player.ClickAvailable && ClickAvailable);
-        GameManager.Instance.EnablePlayerKeyboard(GameManager.Instance.Player.KeyboardTypeAvailable && KeyboardTypeAvailable, AlphabetManager);
+        if(!IsDesktop)
+        {
+            GameManager.Instance.EnableMouseDragAndDrop(GameManager.Instance.Player.DragAndDropAvailable && DragAndDropAvailable);
+            GameManager.Instance.EnableMouseClickOnFolder(GameManager.Instance.Player.ClickAvailable && ClickAvailable);
+            GameManager.Instance.EnablePlayerKeyboard(GameManager.Instance.Player.KeyboardTypeAvailable && KeyboardTypeAvailable, AlphabetManager);
+
+        }
+        else
+        {
+            GameManager.Instance.EnableMouseDragAndDrop(GameManager.Instance.Player.DragAndDropAvailable && DragAndDropAvailable);
+
+        }
     }
 }
