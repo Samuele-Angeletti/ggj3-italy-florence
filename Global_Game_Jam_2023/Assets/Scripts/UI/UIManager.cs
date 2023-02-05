@@ -36,7 +36,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI linkBar;
     [SerializeField] GameObject keyPanel;
     [SerializeField] GameObject keyPrefab;
-
+    [SerializeField] GameObject gameOverPanel;
+    [SerializeField] GameObject creditsPanel;
     private Queue<GameObject> keys;
 
     private const string linkBase = @"C:\";
@@ -116,4 +117,13 @@ public class UIManager : MonoBehaviour
         Animator.SetTrigger("Start");
     }
 
+    public void ShowCredits()
+    {
+        creditsPanel.SetActive(true);
+    }
+
+    public void ShowGameOver()
+    {
+        gameOverPanel.SetActive(true);
+    }
 }

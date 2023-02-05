@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
     public AudioClip MouseClick;
     public List<AudioClip> KeyboardSounds;
 
+    public GameObject levelSound;
+    public GameObject endSound;
+
     public void PlayPotectedFolder()
     {
         AudioSourceGlobal.clip = ProtectedFolder;
@@ -134,7 +137,8 @@ public class GameManager : MonoBehaviour
 
     private void Spenter_performed(InputAction.CallbackContext obj)
     {
-
+        UIManager.Instance.ShowCredits();
+        _inputSystem.PlayerEndMap1.Disable();
     }
 
     private void Escer_performed(InputAction.CallbackContext obj)
@@ -145,6 +149,7 @@ public class GameManager : MonoBehaviour
     private void Enter_performed(InputAction.CallbackContext obj)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        _inputSystem.PlayerEndMap1.Disable();
     }
 
     private void LeftMouse_performed(InputAction.CallbackContext obj)
@@ -300,7 +305,17 @@ public class GameManager : MonoBehaviour
     {
 
         _player.gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        Invoke(nameof(StartMusic), 1f);
     }
+
+    public void StartMusic()
+    {
+        levelSound.SetActive(true);
+    }
+
 
     private void DownPerformed(InputAction.CallbackContext obj)
     {
@@ -410,7 +425,20 @@ public class GameManager : MonoBehaviour
             _alphabetManager = alphabetManager;
     }
 
+    public void GameOver()
+    {
+        UIManager.Instance.ShowGameOver();
 
+        levelSound.SetActive(false);
+        endSound.SetActive(true);
+
+        EnableMouseClickOnFolder(false);
+        EnableMouseDragAndDrop(false);
+        EnablePlayerKeyboard(false);
+        EnablePlayerMovement(false);
+        _inputSystem.PlayerEndMap1.Enable();
+        _player.gameObject.SetActive(false);
+    }
 
     public void Exit()
     {
