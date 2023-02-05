@@ -257,7 +257,7 @@ public class Player : MonoBehaviour
         graphics.SetActive(false);
 
         SetCheckpoint(newCheckPoint);
-        GameManager.Instance.EnablePlayerKeyboard(false);
+        GameManager.Instance.EnablePlayerMovement(false);
         Invoke(nameof(ResetPosition), timeBetweenRespawn);
         Invoke(nameof(InteractComplete), timeBetweenRespawn);
     }
