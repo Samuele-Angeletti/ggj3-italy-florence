@@ -13,13 +13,13 @@ public class PowerUpInteractable : Interactable
         switch (typeToActive)
         {
             case EPowerUp.DragAndDrop:
-                GameManager.Instance.EnableMouseDragAndDrop(true);
+                player.DragAndDropAvailable = true;
                 break;
             case EPowerUp.ClickOnFolder:
-                GameManager.Instance.EnableMouseClickOnFolder(true);
+                player.ClickAvailable = true;
                 break;
             case EPowerUp.TypeKeyboard:
-                GameManager.Instance.EnablePlayerKeyboard(true);
+                player.KeyboardTypeAvailable = true;
                 break;
         }
         Player = player;

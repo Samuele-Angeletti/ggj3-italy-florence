@@ -336,8 +336,6 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-
-        _player.DragAndDropAvailable = true;
     }
 
     public void EnableMouseClickOnFolder(bool active)
@@ -364,8 +362,6 @@ public class GameManager : MonoBehaviour
             }
         }
 
-
-        _player.ClickAvailable = active;
     }
 
     public void EnablePlayerKeyboard(bool active, AlphabetManager alphabetManager = null)
