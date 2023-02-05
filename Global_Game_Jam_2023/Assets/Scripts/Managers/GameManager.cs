@@ -90,6 +90,8 @@ public class GameManager : MonoBehaviour
         _inputSystem.PlayerKeyboard.Y.performed += Y_performed;
         _inputSystem.PlayerKeyboard.Z.performed += Z_performed;
         _inputSystem.PlayerKeyboard.Backspace.performed += Backspace_performed; ;
+
+        EnablePlayerKeyboard(false);
     }
 
     private void Backspace_performed(InputAction.CallbackContext obj)
