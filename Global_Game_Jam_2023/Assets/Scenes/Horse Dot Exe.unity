@@ -3375,7 +3375,7 @@ PrefabInstance:
     - target: {fileID: 2754476489661967061, guid: 4961e3e0ff52fa3438acf74a88affb20,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2754476489661967062, guid: 4961e3e0ff52fa3438acf74a88affb20,
         type: 3}
@@ -9173,9 +9173,29 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4368369396638782932, guid: d099acb78fb539146bd8ffbf95e78c7d,
         type: 3}
+      propertyPath: jumpFinal
+      value: 
+      objectReference: {fileID: 8300000, guid: 77e4b66130570f04694851401c5e8694, type: 3}
+    - target: {fileID: 4368369396638782932, guid: d099acb78fb539146bd8ffbf95e78c7d,
+        type: 3}
+      propertyPath: playerDeath
+      value: 
+      objectReference: {fileID: 8300000, guid: bcc8b691c00dc47448a8b8497ebfdf72, type: 3}
+    - target: {fileID: 4368369396638782932, guid: d099acb78fb539146bd8ffbf95e78c7d,
+        type: 3}
+      propertyPath: codinaCavallo
+      value: 
+      objectReference: {fileID: 8300000, guid: 419d4e17a239bb74d8bcd90dc523ae45, type: 3}
+    - target: {fileID: 4368369396638782932, guid: d099acb78fb539146bd8ffbf95e78c7d,
+        type: 3}
       propertyPath: movementSpeed
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 4368369396638782932, guid: d099acb78fb539146bd8ffbf95e78c7d,
+        type: 3}
+      propertyPath: pixelExplosion
+      value: 
+      objectReference: {fileID: 8300000, guid: 90467f377a8bcf74087861d7c55c3e47, type: 3}
     - target: {fileID: 4368369396638782933, guid: d099acb78fb539146bd8ffbf95e78c7d,
         type: 3}
       propertyPath: m_RootOrder
@@ -12005,7 +12025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2207046157645554514
 MonoBehaviour:
   m_ObjectHideFlags: 0
